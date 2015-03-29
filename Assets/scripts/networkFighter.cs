@@ -29,10 +29,12 @@ public class networkFighter : Photon.MonoBehaviour {
 		if (gameObject.GetComponent<spaceShipController> ().amIPilot) {
 			stream.SendNext(transform.position);
 			stream.SendNext(transform.rotation);
+
 		} else {
 			transform.position = (Vector3) stream.ReceiveNext();
 			transform.rotation = (Quaternion) stream.ReceiveNext();
-				}
+
+			}
 
 
 	}

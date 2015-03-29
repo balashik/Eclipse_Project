@@ -18,7 +18,6 @@ public class spaceShipController : MonoBehaviour {
 	public int shotBuffer;
 	public Vector3[] gunnerMountPoints; //where we are shooting from
 	public Transform gunnerShotPrefab;
-
 	float mouseY;
 	// Use this for initialization
 	void Start () {
@@ -30,13 +29,15 @@ public class spaceShipController : MonoBehaviour {
 			Debug.LogError ("Thruster array not properly configured. Attach thrusters to the game object and link them to the Thrusters array.");
 		}
 	}
+	
 	int counter=0;
 	// Update is called once per frame
 	void Update () {
+
 		if (!amIPilot) {
 						if ((Input.GetAxis ("leftGun") == 1)) {
 								counter++;
-								Debug.Log ("counter is " + counter);
+								//Debug.Log ("counter is " + counter);
 								if (counter == shotBuffer) {
 										// Calculate where the position is in world space for the mount point
 										Vector3 pos = transform.position + transform.right * gunnerMountPoints [1].x + transform.up * gunnerMountPoints [1].y + transform.forward * gunnerMountPoints [1].z;
@@ -44,13 +45,14 @@ public class spaceShipController : MonoBehaviour {
 										Transform gunShot = (Transform)Instantiate (gunnerShotPrefab, pos, transform.rotation);
 										// Specify which transform it was that fired this round so we can ignore it for collision/hit
 										gunShot.GetComponent<SU_LaserShot> ().firedBy = transform;
+										Debug.Log (gunShot.GetComponent<SU_LaserShot> ().ToString());
 										counter = 0;
 					
 								}
 						}
-						if ((Input.GetAxis ("rightGun") == 1)) {
+						if ((Input.GetAxis ("Fire2") == 1)) {//rightGun
 								counter++;
-								Debug.Log ("counter is " + counter);
+								//Debug.Log ("counter is " + counter);
 								if (counter == shotBuffer) {
 										// Calculate where the position is in world space for the mount point
 										Vector3 pos = transform.position + transform.right * gunnerMountPoints [0].x + transform.up * gunnerMountPoints [0].y + transform.forward * gunnerMountPoints [0].z;
@@ -64,7 +66,7 @@ public class spaceShipController : MonoBehaviour {
 						}
 						if ((Input.GetAxis ("leftGun") == 1) && (Input.GetAxis ("rightGun") == 1)) {
 							counter++;
-							Debug.Log ("counter is " + counter);
+							//Debug.Log ("counter is " + counter);
 							if (counter == shotBuffer) {
 								foreach (Vector3 gun in gunnerMountPoints) {
 									// Calculate where the position is in world space for the mount point

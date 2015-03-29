@@ -2,35 +2,36 @@
 //Gal Shalit, Yaniv Levi, David Faizulaev & Avishag Zehavi
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NetworkManager : MonoBehaviour {
+	
 
-	public Camera standbyCam;
-	spawnSpot[] spots;
 	int whoAmI;
 	public OVRCameraRig localCam;
-	public Camera testCam;
+	List<GameObject> fighters = new List<GameObject>();// the array of the fighters
+	spawnSpot[] spots;
 
 	// Use this for initialization
-	void Start () {
+
+	/*void Start () {
 		Debug.Log ("Start PhotonServer");
-		//spots= GameObject.FindObjectsOfType<spawnSpot> ();
-		//Connect ();
-	}
-	public void Connect(){
+	}*/
+	/*public void Connect(){
 		Debug.Log("Connect to PhotonServer");
 		spots= GameObject.FindObjectsOfType<spawnSpot> ();
 		PhotonNetwork.ConnectUsingSettings("alpha");
-	}
+	}*/
 
 	public void ConnectAsPliot(){
+
 		Debug.Log("ConnectAsPliot to PhotonServer");
-		spots= GameObject.FindObjectsOfType<spawnSpot> ();
+		//spots= GameObject.FindObjectsOfType<spawnSpot> ();
 		PhotonNetwork.ConnectUsingSettings("alpha");
 		whoAmI = 0; //Pilot
-		
-		If(PhotonNetwork.playerList.Length>2)
-		{
+
+
+		if(PhotonNetwork.playerList.Length>2){
 			Debug.Log("more then 2 players on server - need to generate new locations");
 			//Spawn new locations for new spaceship and player.
 		}
@@ -38,11 +39,11 @@ public class NetworkManager : MonoBehaviour {
 
 	public void ConnectAsGunner(){
 		Debug.Log("ConnectAsGunner to PhotonServer");
-		spots= GameObject.FindObjectsOfType<spawnSpot> ();
+		//spots= GameObject.FindObjectsOfType<spawnSpot> ();
 		PhotonNetwork.ConnectUsingSettings("alpha");
 		whoAmI = 1; //Gunner
 		
-		If(PhotonNetwork.playerList.Length>2)
+		if(PhotonNetwork.playerList.Length>2)
 		{
 			Debug.Log("more then 2 players on server - need to generate new locations");
 			//Spawn new locations for new spaceship and player.
@@ -55,6 +56,7 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	void OnJoinedLobby(){
+
 		Debug.Log("OnJoinedLobby");
 		//PhotonNetwork.JoinOrCreateRoom ("mmo",null,null);	
 		PhotonNetwork.JoinRandomRoom ();
@@ -66,7 +68,8 @@ public class NetworkManager : MonoBehaviour {
 	void OnJoinedRoom(){
 		Debug.Log("OnJoinedRoom");
 		Debug.Log ("Checking which player to spawn");
-
+		fighters.Add(PhotonNetwork.Instantiate ("fighter",Vector3.zero,Quaternion.identity,0/*group id*/));
+		spots = fighters[0].GetComponentsInChildren<spawnSpot>();
 		if (whoAmI==0) {
 			spawnPilot ();
 			Debug.Log ("spawned pilot");
@@ -74,45 +77,43 @@ public class NetworkManager : MonoBehaviour {
 		else {
 			spawnGunner ();
 			Debug.Log ("spawned gunner");
-				}
+		}
 	}
 
 	void spawnPilot(){
 		if (spots == null) {
-			Debug.LogError("there are no spawnspots in the game");
+			Debug.LogError("there are no spawnspots in the spaceship or no spaceship");
 			return;
 		}
-		spawnSpot mySpot = spots[0];
-
-		GameObject myFighter = GameObject.Find ("Fighter");
-		myFighter.GetComponent<spaceShipController> ().amIPilot = true;
-		localCam.transform.parent = myFighter.transform;
+		localCam.gameObject.SetActive( true);
+		spawnSpot mySpot = spots [0];
+		//GameObject myFighter = GameObject.Find ("Fighter");
+		//myFighter.GetComponent<spaceShipController> ().amIPilot = true;
+		fighters[0].GetComponent<spaceShipController> ().amIPilot = true;
+		localCam.transform.parent = fighters[0].transform;
         
 		localCam.transform.position = mySpot.transform.position;
 		localCam.transform.rotation = mySpot.transform.rotation;
 		localCam.transform.position = new Vector3 (localCam.transform.position.x, 5.319f, localCam.transform.position.z);
 
-		testCam.enabled = true;
-        standbyCam.enabled = false;
+
 	}
 
 	void spawnGunner(){
 		if (spots == null) {
-			Debug.LogError("there are no spawnspots in the game");
+			Debug.LogError("there are no spawnspots in the spaceship or no spaceship");
 			return;
 		}
-		spawnSpot mySpot = spots[1];
+		localCam.gameObject.SetActive( true);
+		spawnSpot mySpot = spots [1];
+		//GameObject myFighter = GameObject.Find ("Fighter");
+		//myFighter.GetComponent<spaceShipController> ().amIPilot = true;
+		fighters[0].GetComponent<spaceShipController> ().amIPilot = true;
+		localCam.transform.parent = fighters[0].transform;
 		
-		GameObject myFighter = GameObject.Find ("Fighter");
-		myFighter.GetComponent<spaceShipController> ().amIPilot = false;
-
-		localCam.transform.parent = myFighter.transform;
 		localCam.transform.position = mySpot.transform.position;
 		localCam.transform.rotation = mySpot.transform.rotation;
 		localCam.transform.position = new Vector3 (localCam.transform.position.x, 5.319f, localCam.transform.position.z);
-
-		testCam.enabled = true;
-		standbyCam.enabled = false;
 	}
 
 }
