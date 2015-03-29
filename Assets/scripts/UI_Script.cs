@@ -12,7 +12,7 @@ public class UI_Script : MonoBehaviour
 	public Button ButtonMULTIPLAYER;
 	public Button ButtonQUIT;
 
-	//Sub menu elements
+	//Sub-menu elements
 	public Canvas CanvasSub_Menu;
 	public Button ButtonPILOT;
 	public Button ButtonGUNNER;
@@ -83,7 +83,7 @@ public class UI_Script : MonoBehaviour
 	public void PressBack()
 	{
 		Debug.Log ("PressBack");
-		//Disable sub menu
+		//Disable sub-menu
 		CanvasSub_Menu.enabled = false;
 
 		//Re-enable main menu

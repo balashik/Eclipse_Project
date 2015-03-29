@@ -29,7 +29,7 @@ public class NetworkManager : MonoBehaviour {
 		PhotonNetwork.ConnectUsingSettings("alpha");
 		whoAmI = 0; //Pilot
 		
-		If(PhotonNetwork.playerList.Length>2)
+		if(PhotonNetwork.playerList.Length>2)
 		{
 			Debug.Log("more then 2 players on server - need to generate new locations");
 			//Spawn new locations for new spaceship and player.
@@ -42,7 +42,7 @@ public class NetworkManager : MonoBehaviour {
 		PhotonNetwork.ConnectUsingSettings("alpha");
 		whoAmI = 1; //Gunner
 		
-		If(PhotonNetwork.playerList.Length>2)
+		if(PhotonNetwork.playerList.Length>2)
 		{
 			Debug.Log("more then 2 players on server - need to generate new locations");
 			//Spawn new locations for new spaceship and player.
