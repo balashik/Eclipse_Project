@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Project EcliPse - Shenkar final project 2015.
+//Gal Shalit, Yaniv Levi, David Faizulaev & Avishag Zehavi
+using UnityEngine;
 using System.Collections;
 
 public class NetworkManager : MonoBehaviour {
@@ -8,21 +10,50 @@ public class NetworkManager : MonoBehaviour {
 	int whoAmI;
 	public OVRCameraRig localCam;
 	public Camera testCam;
+
 	// Use this for initialization
 	void Start () {
-		Debug.Log("start");
-		spots= GameObject.FindObjectsOfType<spawnSpot> ();
-		Connect ();
+		Debug.Log ("Start PhotonServer");
+		//spots= GameObject.FindObjectsOfType<spawnSpot> ();
+		//Connect ();
 	}
-	void Connect(){
-		Debug.Log("Connect");
+	public void Connect(){
+		Debug.Log("Connect to PhotonServer");
+		spots= GameObject.FindObjectsOfType<spawnSpot> ();
 		PhotonNetwork.ConnectUsingSettings("alpha");
 	}
+
+	public void ConnectAsPliot(){
+		Debug.Log("ConnectAsPliot to PhotonServer");
+		spots= GameObject.FindObjectsOfType<spawnSpot> ();
+		PhotonNetwork.ConnectUsingSettings("alpha");
+		whoAmI = 0; //Pilot
+		
+		If(PhotonNetwork.playerList.Length>2)
+		{
+			Debug.Log("more then 2 players on server - need to generate new locations");
+			//Spawn new locations for new spaceship and player.
+		}
+	}
+
+	public void ConnectAsGunner(){
+		Debug.Log("ConnectAsGunner to PhotonServer");
+		spots= GameObject.FindObjectsOfType<spawnSpot> ();
+		PhotonNetwork.ConnectUsingSettings("alpha");
+		whoAmI = 1; //Gunner
+		
+		If(PhotonNetwork.playerList.Length>2)
+		{
+			Debug.Log("more then 2 players on server - need to generate new locations");
+			//Spawn new locations for new spaceship and player.
+		}
+	}
+
 	void OnGUI(){
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
-		GUILayout.Label (PhotonNetwork.countOfPlayers.ToString());
-		GUILayout.Label (GameObject.Find("Fighter").transform.position.ToString());
+		GUILayout.Label ("Number of players in room "+PhotonNetwork.countOfPlayers.ToString());
 	}
+
 	void OnJoinedLobby(){
 		Debug.Log("OnJoinedLobby");
 		//PhotonNetwork.JoinOrCreateRoom ("mmo",null,null);	
@@ -34,30 +65,54 @@ public class NetworkManager : MonoBehaviour {
 	}
 	void OnJoinedRoom(){
 		Debug.Log("OnJoinedRoom");
-		spawnMe ();
+		Debug.Log ("Checking which player to spawn");
 
+		if (whoAmI==0) {
+			spawnPilot ();
+			Debug.Log ("spawned pilot");
+		} 
+		else {
+			spawnGunner ();
+			Debug.Log ("spawned gunner");
+				}
 	}
 
-	void spawnMe(){
+	void spawnPilot(){
 		if (spots == null) {
 			Debug.LogError("there are no spawnspots in the game");
 			return;
 		}
 		spawnSpot mySpot = spots[0];
 
-		//GameObject myPlayer = (GameObject)PhotonNetwork.Instantiate ("OVRCameraRig",mySpot.transform.position,mySpot.transform.rotation,0/*importent spaceship id*/);
 		GameObject myFighter = GameObject.Find ("Fighter");
 		myFighter.GetComponent<spaceShipController> ().amIPilot = true;
 		localCam.transform.parent = myFighter.transform;
-		//myPlayer.GetComponent<Camera> ().enabled = true;
-        localCam.transform.position = mySpot.transform.position;
+        
+		localCam.transform.position = mySpot.transform.position;
 		localCam.transform.rotation = mySpot.transform.rotation;
 		localCam.transform.position = new Vector3 (localCam.transform.position.x, 5.319f, localCam.transform.position.z);
+
 		testCam.enabled = true;
-        
+        standbyCam.enabled = false;
+	}
 
+	void spawnGunner(){
+		if (spots == null) {
+			Debug.LogError("there are no spawnspots in the game");
+			return;
+		}
+		spawnSpot mySpot = spots[1];
+		
+		GameObject myFighter = GameObject.Find ("Fighter");
+		myFighter.GetComponent<spaceShipController> ().amIPilot = false;
+
+		localCam.transform.parent = myFighter.transform;
+		localCam.transform.position = mySpot.transform.position;
+		localCam.transform.rotation = mySpot.transform.rotation;
+		localCam.transform.position = new Vector3 (localCam.transform.position.x, 5.319f, localCam.transform.position.z);
+
+		testCam.enabled = true;
 		standbyCam.enabled = false;
-
 	}
 
 }
