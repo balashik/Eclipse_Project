@@ -50,7 +50,7 @@ public class spaceShipController : MonoBehaviour {
 					
 								}
 						}
-						if ((Input.GetAxis ("Fire2") == 1)) {//rightGun
+					if ((Input.GetAxis ("rightGun") == 1)) {//rightGun
 								counter++;
 								//Debug.Log ("counter is " + counter);
 								if (counter == shotBuffer) {

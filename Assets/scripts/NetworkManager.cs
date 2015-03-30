@@ -9,45 +9,33 @@ public class NetworkManager : MonoBehaviour {
 
 	int whoAmI;
 	public OVRCameraRig localCam;
-	List<GameObject> fighters = new List<GameObject>();// the array of the fighters
 	spawnSpot[] spots;
+	int groupId;
+	GameObject Fighter;
 
-	// Use this for initialization
-
-	/*void Start () {
-		Debug.Log ("Start PhotonServer");
-	}*/
-	/*public void Connect(){
-		Debug.Log("Connect to PhotonServer");
-		spots= GameObject.FindObjectsOfType<spawnSpot> ();
-		PhotonNetwork.ConnectUsingSettings("alpha");
-	}*/
+	void getGroupId(){
+		int num = PhotonNetwork.player.ID;
+		if (num % 2 == 0) {
+			groupId = (num / 2) - 1;
+			return;
+		} else {
+			groupId = num / 2;
+			return;
+		}
+		Debug.Log (groupId);
+	}
 
 	public void ConnectAsPliot(){
 
 		Debug.Log("ConnectAsPliot to PhotonServer");
-		//spots= GameObject.FindObjectsOfType<spawnSpot> ();
 		PhotonNetwork.ConnectUsingSettings("alpha");
 		whoAmI = 0; //Pilot
-
-
-		if(PhotonNetwork.playerList.Length>2){
-			Debug.Log("more then 2 players on server - need to generate new locations");
-			//Spawn new locations for new spaceship and player.
-		}
 	}
 
 	public void ConnectAsGunner(){
 		Debug.Log("ConnectAsGunner to PhotonServer");
-		//spots= GameObject.FindObjectsOfType<spawnSpot> ();
 		PhotonNetwork.ConnectUsingSettings("alpha");
 		whoAmI = 1; //Gunner
-		
-		if(PhotonNetwork.playerList.Length>2)
-		{
-			Debug.Log("more then 2 players on server - need to generate new locations");
-			//Spawn new locations for new spaceship and player.
-		}
 	}
 
 	void OnGUI(){
@@ -56,64 +44,37 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	void OnJoinedLobby(){
-
 		Debug.Log("OnJoinedLobby");
-		//PhotonNetwork.JoinOrCreateRoom ("mmo",null,null);	
 		PhotonNetwork.JoinRandomRoom ();
 	}
 	void OnPhotonRandomJoinFailed(){
-		PhotonNetwork.CreateRoom (null);
+		PhotonNetwork.CreateRoom (null); // need to change room name to something with value
 		Debug.Log("OnPhotonJoinRoomFailed");
 	}
 	void OnJoinedRoom(){
-		Debug.Log("OnJoinedRoom");
-		Debug.Log ("Checking which player to spawn");
-		fighters.Add(PhotonNetwork.Instantiate ("fighter",Vector3.zero,Quaternion.identity,0/*group id*/));
-		spots = fighters[0].GetComponentsInChildren<spawnSpot>();
-		if (whoAmI==0) {
-			spawnPilot ();
-			Debug.Log ("spawned pilot");
-		} 
-		else {
-			spawnGunner ();
-			Debug.Log ("spawned gunner");
-		}
-	}
-
-	void spawnPilot(){
-		if (spots == null) {
-			Debug.LogError("there are no spawnspots in the spaceship or no spaceship");
-			return;
-		}
-		localCam.gameObject.SetActive( true);
-		spawnSpot mySpot = spots [0];
-		//GameObject myFighter = GameObject.Find ("Fighter");
-		//myFighter.GetComponent<spaceShipController> ().amIPilot = true;
-		fighters[0].GetComponent<spaceShipController> ().amIPilot = true;
-		localCam.transform.parent = fighters[0].transform;
-        
-		localCam.transform.position = mySpot.transform.position;
-		localCam.transform.rotation = mySpot.transform.rotation;
-		localCam.transform.position = new Vector3 (localCam.transform.position.x, 5.319f, localCam.transform.position.z);
-
+		Debug.Log ("OnJoinedRoom");
+		getGroupId ();
+		Fighter = PhotonNetwork.Instantiate ("fighter",Vector3.zero,Quaternion.identity,groupId);
+		spots = Fighter.GetComponentsInChildren<spawnSpot>();
+		spawn ();
 
 	}
 
-	void spawnGunner(){
+	void spawn(){
 		if (spots == null) {
-			Debug.LogError("there are no spawnspots in the spaceship or no spaceship");
-			return;
+			Debug.LogError ("unable spawn to a spot, spots = null");
 		}
-		localCam.gameObject.SetActive( true);
-		spawnSpot mySpot = spots [1];
-		//GameObject myFighter = GameObject.Find ("Fighter");
-		//myFighter.GetComponent<spaceShipController> ().amIPilot = true;
-		fighters[0].GetComponent<spaceShipController> ().amIPilot = true;
-		localCam.transform.parent = fighters[0].transform;
-		
+		spawnSpot mySpot = spots [whoAmI];
+		localCam.transform.parent = Fighter.transform;
+		localCam.gameObject.SetActive (true);
 		localCam.transform.position = mySpot.transform.position;
 		localCam.transform.rotation = mySpot.transform.rotation;
-		localCam.transform.position = new Vector3 (localCam.transform.position.x, 5.319f, localCam.transform.position.z);
+		localCam.transform.position = new Vector3 (localCam.transform.position.x, 5.319f, localCam.transform.position.z);//need to change the spawn height and then to remove this line
+		if (whoAmI ==0)
+			Fighter.GetComponent<spaceShipController> ().amIPilot = true;
+		else if (whoAmI==1)
+			Fighter.GetComponent<spaceShipController> ().amIPilot = false;
+
 	}
 
 }
