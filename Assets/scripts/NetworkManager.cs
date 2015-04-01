@@ -8,10 +8,13 @@ public class NetworkManager : MonoBehaviour {
 	
 
 	int whoAmI;
-	public OVRCameraRig localCam;
+	public OVRCameraRig ovrCam;
+	public Camera cam;//test cam
 	spawnSpot[] spots;
 	int groupId;
 	GameObject Fighter;
+
+	
 
 	void getGroupId(){
 		int num = PhotonNetwork.player.ID;
@@ -41,6 +44,11 @@ public class NetworkManager : MonoBehaviour {
 	void OnGUI(){
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
 		GUILayout.Label ("Number of players in room "+PhotonNetwork.countOfPlayers.ToString());
+		GUILayout.Label ("I R NUMBER " + PhotonNetwork.player.ID);
+		if (!(Fighter == null)) {
+			GUILayout.Label ("Number of players in room "+Fighter.transform.position.ToString());		
+		}
+//		
 	}
 
 	void OnJoinedLobby(){
@@ -51,10 +59,13 @@ public class NetworkManager : MonoBehaviour {
 		PhotonNetwork.CreateRoom (null); // need to change room name to something with value
 		Debug.Log("OnPhotonJoinRoomFailed");
 	}
+	void OnCreateRoom(){
+		Debug.Log ("OnCreateRoom");
+	}
 	void OnJoinedRoom(){
 		Debug.Log ("OnJoinedRoom");
 		getGroupId ();
-		Fighter = PhotonNetwork.Instantiate ("fighter",Vector3.zero,Quaternion.identity,groupId);
+		Fighter = PhotonNetwork.Instantiate ("fighter",Vector3.zero,Quaternion.identity,/*groupId*/0);
 		spots = Fighter.GetComponentsInChildren<spawnSpot>();
 		spawn ();
 
@@ -65,16 +76,23 @@ public class NetworkManager : MonoBehaviour {
 			Debug.LogError ("unable spawn to a spot, spots = null");
 		}
 		spawnSpot mySpot = spots [whoAmI];
-		localCam.transform.parent = Fighter.transform;
-		localCam.gameObject.SetActive (true);
-		localCam.transform.position = mySpot.transform.position;
-		localCam.transform.rotation = mySpot.transform.rotation;
-		localCam.transform.position = new Vector3 (localCam.transform.position.x, 5.319f, localCam.transform.position.z);//need to change the spawn height and then to remove this line
-		if (whoAmI ==0)
-			Fighter.GetComponent<spaceShipController> ().amIPilot = true;
-		else if (whoAmI==1)
-			Fighter.GetComponent<spaceShipController> ().amIPilot = false;
 
+
+		cam.transform.position = mySpot.transform.position;
+		cam.transform.rotation = mySpot.transform.rotation;
+		
+		cam.transform.position = new Vector3 (ovrCam.transform.position.x, 5.319f, ovrCam.transform.position.z);//need to change the spawn height and then to remove this line
+		Fighter.GetComponent<networkFighter> ().myCam = cam;
+		cam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
+
+		/*oculus section
+		ovrCam.transform.position = mySpot.transform.position;
+		ovrCam.transform.rotation = mySpot.transform.rotation;
+
+		ovrCam.transform.position = new Vector3 (ovrCam.transform.position.x, 5.319f, ovrCam.transform.position.z);//need to change the spawn height and then to remove this line
+		Fighter.GetComponent<networkFighter> ().myCam = ovrCam;
+		ovrCam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
+*/
 	}
 
 }
