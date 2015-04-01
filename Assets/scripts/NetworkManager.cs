@@ -13,7 +13,7 @@ public class NetworkManager : MonoBehaviour {
 	spawnSpot[] spots;
 	int groupId;
 	GameObject Fighter;
-
+	Camera[] displayCams;
 	
 
 	void getGroupId(){
@@ -72,6 +72,11 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	void spawn(){
+		displayCams = Fighter.GetComponentsInChildren<Camera> ();
+		displayCams [0].enabled = false;
+		displayCams [1].enabled = false;
+		displayCams [2].enabled = false;
+		//Fighter.GetComponents<d
 		if (spots == null) {
 			Debug.LogError ("unable spawn to a spot, spots = null");
 		}
@@ -83,6 +88,7 @@ public class NetworkManager : MonoBehaviour {
 		
 		cam.transform.position = new Vector3 (ovrCam.transform.position.x, 5.319f, ovrCam.transform.position.z);//need to change the spawn height and then to remove this line
 		Fighter.GetComponent<networkFighter> ().myCam = cam;
+		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
 		cam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
 
 		/*oculus section
