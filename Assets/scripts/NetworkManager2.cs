@@ -4,38 +4,25 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class NetworkManager :Photon.MonoBehaviour {
-	
+public class NetworkManager2 : Photon.MonoBehaviour {
 
 	int whoAmI;
 	public OVRCameraRig ovrCam;
 	public Camera cam;//test cam
 	spawnSpot[] spots;
-	int spaceshipId;
 	int groupId;
 	GameObject Fighter;
 	Camera[] displayCams;
-	public int gal = 1001; //witch one is this 
-
-	void getSpaceshipId(){
-		if (PhotonNetwork.player.ID % 2 == 0) {
-			spaceshipId = (PhotonNetwork.player.ID - 1) + 1000;
-			return;
-		} else {
-			spaceshipId = PhotonNetwork.player.ID+1000;
-			return;
-		}
-	
-	}
 
 	void getGroupId(){
 		int num = PhotonNetwork.player.ID;
+		//Debug.Log ("player.ID "+num);
 		if (num % 2 == 0) {
 			groupId = (num / 2) - 1;
-			return;
+			//return;
 		} else {
 			groupId = num / 2;
-			return;
+			//return;
 		}
 		Debug.Log (groupId);
 	}
@@ -60,7 +47,6 @@ public class NetworkManager :Photon.MonoBehaviour {
 		if (!(Fighter == null)) {
 			GUILayout.Label ("Number of players in room "+Fighter.transform.position.ToString());		
 		}
-//		
 	}
 
 	void OnJoinedLobby(){
@@ -76,39 +62,43 @@ public class NetworkManager :Photon.MonoBehaviour {
 	}
 	void OnJoinedRoom(){
 		Debug.Log ("OnJoinedRoom");
-		getSpaceshipId();
+		getGroupId ();
+		Debug.Log("GroupId  "+groupId);
 
-		if ((PhotonNetwork.player.ID % 2) != 0) {
-			Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
-			//Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
+		//check number of connected players - if only 1 is connected (me) - wait until another player connects
+		//then Instantiate Fighter - do only for 2 players.
+		int MYID = PhotonNetwork.player.ID;
+		Debug.Log ("MY ID IS" + MYID);
+
+		if (MYID == 1) {
+						Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
+						spots = Fighter.GetComponentsInChildren<spawnSpot> ();
+						spawn ();
+			
 		} else {
-
-			Debug.Log(PhotonView.Find(1001));
-			//Fighter = PhotonView.Find (1001).gameObject;
-			//StartCoroutine(getFighter());
+			//Still need to find the existing Fighter GameObject
+			spots = Fighter.GetComponentsInChildren<spawnSpot>();
+			spawn ();
 		}
+		//Debug.Log ("Number of players in roon:" + PhotonNetwork.countOfPlayers);
+		//Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
+		//spots = Fighter.GetComponentsInChildren<spawnSpot>();
+		//spawn ();
+	}
+
+	void spawn(){
 
 		displayCams = Fighter.GetComponentsInChildren<Camera> ();
 		displayCams [0].enabled = false;
 		displayCams [1].enabled = false;
 		displayCams [2].enabled = false;
-
-		spawn ();
-
-	}
-
-	void spawn(){
-
-		spots = Fighter.GetComponentsInChildren<spawnSpot>();
+		//Fighter.GetComponents<d
 		if (spots == null) {
 			Debug.LogError ("unable spawn to a spot, spots = null");
 		}
+		Debug.Log ("My role(0 pilot 1 gunner) is: "+whoAmI);
 		spawnSpot mySpot = spots [whoAmI];
-		if (whoAmI == 0) {
-			Fighter.GetComponent<networkFighter> ().amIPilot = true;
-		} else {
-			Fighter.GetComponent<networkFighter> ().amIPilot = false;
-		}
+
 		cam.transform.position = mySpot.transform.position;
 		cam.transform.rotation = mySpot.transform.rotation;
 		
@@ -126,18 +116,5 @@ public class NetworkManager :Photon.MonoBehaviour {
 		ovrCam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
 */
 	}
-
-	/*IEnumerator getFighter(){
-
-		while(Fighter==null){
-			Debug.Log("HERE");
-			Fighter = PhotonView.Find (spaceshipId).gameObject;
-			yield return null;
-		}
-
-		Debug.Log ("recived spaceship");
-		yield return new WaitForSeconds (0.5f);
-		Debug.Log ("corutine ended");
-	}*/
 
 }
