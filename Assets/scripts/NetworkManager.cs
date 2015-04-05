@@ -12,11 +12,11 @@ public class NetworkManager :Photon.MonoBehaviour {
 	public Camera cam;//test cam
 	spawnSpot[] spots;
 	int spaceshipId;
-	int groupId;
+	int groupId; 
 	GameObject Fighter;
 	Camera[] displayCams;
-	public int gal = 1001; //witch one is this 
-
+	public int gal = 1001;
+	
 	void getSpaceshipId(){
 		if (PhotonNetwork.player.ID % 2 == 0) {
 			spaceshipId = (PhotonNetwork.player.ID - 1) + 1000;
@@ -38,6 +38,20 @@ public class NetworkManager :Photon.MonoBehaviour {
 			return;
 		}
 		Debug.Log (groupId);
+	}
+
+	GameObject findCurrentFighter(){
+		GameObject[] Fighters = GameObject.FindGameObjectsWithTag ("Fighter");
+		Debug.Log (GameObject.FindGameObjectsWithTag ("Fighter").ToString ());
+		Debug.Log (Fighters.Length);
+		/*foreach (GameObject f in Fighters) {
+			Debug.Log(f.GetComponent<FighterSettings>().groupId);
+			if(f.GetComponent<FighterSettings>().groupId==groupId)
+				return f;
+		}*/
+		Debug.Log ("no fighter was found");
+		return null;
+	
 	}
 
 	public void ConnectAsPliot(){
@@ -76,17 +90,24 @@ public class NetworkManager :Photon.MonoBehaviour {
 	}
 	void OnJoinedRoom(){
 		Debug.Log ("OnJoinedRoom");
-		getSpaceshipId();
+		getGroupId ();
+		Debug.Log (groupId);
 
 		if ((PhotonNetwork.player.ID % 2) != 0) {
 			Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
-			//Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
-		} else {
 
-			Debug.Log(PhotonView.Find(1001));
+			//Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
+			//photonView.RPC("setIdtoFighter",PhotonTargets.All,null);
+			//Fighter.GetComponent<FighterSettings>().groupId = groupId;
+
+
+
+		} else {
+			Fighter = findCurrentFighter();
 			//Fighter = PhotonView.Find (1001).gameObject;
 			//StartCoroutine(getFighter());
 		}
+		//Debug.Log (Fighter);
 
 		displayCams = Fighter.GetComponentsInChildren<Camera> ();
 		displayCams [0].enabled = false;
@@ -127,6 +148,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 */
 	}
 
+	
 	/*IEnumerator getFighter(){
 
 		while(Fighter==null){

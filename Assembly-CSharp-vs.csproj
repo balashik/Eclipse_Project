@@ -135,6 +135,7 @@
      <Compile Include="Assets\SpaceUnity\_Demo\Scrips\SU_Spaceship.cs" />
      <Compile Include="Assets\SpaceUnity\_Demo\Scrips\SU_Thruster.cs" />
      <Compile Include="Assets\scripts\CameraFollow.cs" />
+     <Compile Include="Assets\scripts\FighterSettings.cs" />
      <Compile Include="Assets\scripts\NetworkManager.cs" />
      <Compile Include="Assets\scripts\NetworkManager2.cs" />
      <Compile Include="Assets\scripts\UI_Script.cs" />
