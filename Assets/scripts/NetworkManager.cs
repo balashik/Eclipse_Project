@@ -42,8 +42,8 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 	GameObject findCurrentFighter(){
 		GameObject[] Fighters = GameObject.FindGameObjectsWithTag ("Fighter");
-		Debug.Log (GameObject.Find ("Fighter(Clone)"));
-		Debug.Log (Fighters.Length);
+		//Debug.Log (GameObject.Find ("Fighter(Clone)"));
+		Debug.Log ("Fighter[] length:"+Fighters.Length);
 		foreach (GameObject f in Fighters) {
 			//Debug.Log(f.GetComponent<FighterSettings>().groupId);
 			if(f.GetComponent<FighterSettings>().teamId==groupId)
@@ -70,7 +70,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 	void OnGUI(){
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
 		GUILayout.Label ("Number of players in room "+PhotonNetwork.countOfPlayers.ToString());
-		GUILayout.Label ("I R NUMBER " + PhotonNetwork.player.ID);
+		GUILayout.Label ("player ID " + PhotonNetwork.player.ID);
 		if (!(Fighter == null)) {
 			GUILayout.Label ("Number of players in room "+Fighter.transform.position.ToString());		
 		}
@@ -91,20 +91,20 @@ public class NetworkManager :Photon.MonoBehaviour {
 	void OnJoinedRoom(){
 		Debug.Log ("OnJoinedRoom");
 		getGroupId ();
-		Debug.Log (groupId);
 
 		if ((PhotonNetwork.player.ID % 2) != 0) {
-
+			Debug.Log("odd");
 			GameObject fighterPrefab = (GameObject)Resources.Load("fighter");
 			fighterPrefab.GetComponent<FighterSettings>().teamId = groupId;
-			//Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
+			Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
 
-			Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
+			//Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
 			//photonView.RPC("setIdtoFighter",PhotonTargets.All,null);
 			//Fighter.GetComponent<FighterSettings>().groupId = groupId;
 
 
 		} else {
+			Debug.Log("even");
 			Fighter = findCurrentFighter();
 			//Fighter = PhotonView.Find (1001).gameObject;
 			//StartCoroutine(getFighter());
