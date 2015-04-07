@@ -28,4 +28,16 @@ public class networkFighter : Photon.MonoBehaviour {
 
 		}
 	}
+
+
+	void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info){
+
+		if (stream.isWriting) {
+			//stream.SendNext (gameObject.GetComponent<FighterSettings> ().teamId);		
+		
+		} else {
+
+		}
+
+	}
 }

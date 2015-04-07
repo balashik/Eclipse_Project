@@ -2,8 +2,9 @@
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\NetworkManager.cs">
     <Files>
-      <File FileName="Assets\scripts\NetworkManager.cs" Line="116" Column="3" />
-      <File FileName="Assets\scripts\networkFighter.cs" Line="14" Column="1" />
+      <File FileName="Assets\scripts\networkFighter.cs" Line="36" Column="6" />
+      <File FileName="Assets\scripts\NetworkManager.cs" Line="102" Column="4" />
+      <File FileName="Assets\scripts\FighterSettings.cs" Line="8" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

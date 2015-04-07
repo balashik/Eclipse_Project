@@ -42,13 +42,13 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 	GameObject findCurrentFighter(){
 		GameObject[] Fighters = GameObject.FindGameObjectsWithTag ("Fighter");
-		Debug.Log (GameObject.FindGameObjectsWithTag ("Fighter").ToString ());
+		Debug.Log (GameObject.Find ("Fighter").ToString ());
 		Debug.Log (Fighters.Length);
-		/*foreach (GameObject f in Fighters) {
-			Debug.Log(f.GetComponent<FighterSettings>().groupId);
-			if(f.GetComponent<FighterSettings>().groupId==groupId)
+		foreach (GameObject f in Fighters) {
+			//Debug.Log(f.GetComponent<FighterSettings>().groupId);
+			if(f.GetComponent<FighterSettings>().teamId==groupId)
 				return f;
-		}*/
+		}
 		Debug.Log ("no fighter was found");
 		return null;
 	
@@ -94,12 +94,14 @@ public class NetworkManager :Photon.MonoBehaviour {
 		Debug.Log (groupId);
 
 		if ((PhotonNetwork.player.ID % 2) != 0) {
-			Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
 
-			//Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
+			GameObject fighterPrefab = (GameObject)Resources.Load("fighter");
+			fighterPrefab.GetComponent<FighterSettings>().teamId = groupId;
+			//Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
+
+			Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
 			//photonView.RPC("setIdtoFighter",PhotonTargets.All,null);
 			//Fighter.GetComponent<FighterSettings>().groupId = groupId;
-
 
 
 		} else {
