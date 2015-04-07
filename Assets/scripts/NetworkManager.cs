@@ -42,7 +42,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 	GameObject findCurrentFighter(){
 		GameObject[] Fighters = GameObject.FindGameObjectsWithTag ("Fighter");
-		Debug.Log (GameObject.Find ("Fighter").ToString ());
+		Debug.Log (GameObject.Find ("Fighter(Clone)"));
 		Debug.Log (Fighters.Length);
 		foreach (GameObject f in Fighters) {
 			//Debug.Log(f.GetComponent<FighterSettings>().groupId);
