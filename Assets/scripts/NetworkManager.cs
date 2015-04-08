@@ -150,9 +150,9 @@ public class NetworkManager :Photon.MonoBehaviour {
 	[RPC]
 	public void createFighter(){
 		GameObject fighterPrefab = (GameObject)Resources.Load("fighter");
-		Fighter.GetComponent<FighterSettings>().teamId = groupId;
-		Fighter = Instantiate (fighterPrefab,Vector3.zero,Quaternion.identity)as GameObject;
 
+		Fighter = Instantiate (fighterPrefab,Vector3.zero,Quaternion.identity)as GameObject;
+		Fighter.GetComponent<FighterSettings>().teamId = groupId;
 
 		Fighters.GetComponent<FightersArray> ().fightersList.Add (Fighter);
 
