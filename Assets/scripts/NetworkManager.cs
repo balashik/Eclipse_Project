@@ -104,16 +104,17 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 		} else {
 			Debug.Log("even");
-			Debug.Log(Fighters.GetComponent<FightersArray>().fightersList.Count);
-			Fighter = Fighters.GetComponent<FightersArray>().fightersList[0];
+			StartCoroutine(WaitForFighter());
+			//Debug.Log(Fighters.GetComponent<FightersArray>().fightersList.Count);
+
 		}
 		//Debug.Log (Fighter);
-		displayCams = Fighter.GetComponentsInChildren<Camera> ();
+		/*displayCams = Fighter.GetComponentsInChildren<Camera> ();
 		displayCams [0].enabled = false;
 		displayCams [1].enabled = false;
 		displayCams [2].enabled = false;
 
-		spawn ();
+		spawn ();*/
 
 	}
 
@@ -145,6 +146,26 @@ public class NetworkManager :Photon.MonoBehaviour {
 		Fighter.GetComponent<networkFighter> ().myCam = ovrCam;
 		ovrCam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
 */
+	}
+
+	IEnumerator WaitForFighter()
+	{
+		Debug.Log ("entered corutine");
+		while (Fighters.GetComponent<FightersArray>().fightersList.Count==0) {
+				
+			yield return new WaitForSeconds(0.5f);
+		}
+
+		Debug.Log ("Corutine finished");
+		Fighter = Fighters.GetComponent<FightersArray>().fightersList[0];
+
+		displayCams = Fighter.GetComponentsInChildren<Camera> ();
+		displayCams [0].enabled = false;
+		displayCams [1].enabled = false;
+		displayCams [2].enabled = false;
+		
+		spawn ();
+
 	}
 
 	[RPC]
