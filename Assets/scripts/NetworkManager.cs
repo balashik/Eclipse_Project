@@ -15,7 +15,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 	int groupId; 
 	GameObject Fighter;
 	Camera[] displayCams;
-	public int gal = 1001;
+	public GameObject Fighters;
 	
 	void getSpaceshipId(){
 		if (PhotonNetwork.player.ID % 2 == 0) {
@@ -40,19 +40,10 @@ public class NetworkManager :Photon.MonoBehaviour {
 		Debug.Log (groupId);
 	}
 
-	GameObject findCurrentFighter(){
-		GameObject[] Fighters = GameObject.FindGameObjectsWithTag ("Fighter");
-		//Debug.Log (GameObject.Find ("Fighter(Clone)"));
-		Debug.Log ("Fighter[] length:"+Fighters.Length);
-		foreach (GameObject f in Fighters) {
-			//Debug.Log(f.GetComponent<FighterSettings>().groupId);
-			if(f.GetComponent<FighterSettings>().teamId==groupId)
-				return f;
-		}
-		Debug.Log ("no fighter was found");
-		return null;
-	
-	}
+	/*GameObject findCurrentFighter(){
+		Debug.Log("Testttttttttttttttttttttttttttttttttttttttttttttttt");
+		return Fighters.GetComponent<FightersArray> ().fightersList [0];
+	}*/
 
 	public void ConnectAsPliot(){
 
@@ -78,6 +69,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 	}
 
 	void OnJoinedLobby(){
+
 		Debug.Log("OnJoinedLobby");
 		PhotonNetwork.JoinRandomRoom ();
 	}
@@ -94,23 +86,28 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 		if ((PhotonNetwork.player.ID % 2) != 0) {
 			Debug.Log("odd");
-			GameObject fighterPrefab = (GameObject)Resources.Load("fighter");
-			fighterPrefab.GetComponent<FighterSettings>().teamId = groupId;
-			Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
+
+			photonView.RPC("createFighter",PhotonTargets.AllBuffered);
+
+			//GameObject fighterPrefab = (GameObject)Resources.Load("fighter");
+
+
+
+			//Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
+
+			//gal.Add(Fighter);
 
 			//Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
 			//photonView.RPC("setIdtoFighter",PhotonTargets.All,null);
 			//Fighter.GetComponent<FighterSettings>().groupId = groupId;
-
+			Debug.Log (GameObject.Find("Fighter(Clone)").ToString());
 
 		} else {
 			Debug.Log("even");
-			Fighter = findCurrentFighter();
-			//Fighter = PhotonView.Find (1001).gameObject;
-			//StartCoroutine(getFighter());
+			Debug.Log(Fighters.GetComponent<FightersArray>().fightersList.Count);
+			Fighter = Fighters.GetComponent<FightersArray>().fightersList[0];
 		}
 		//Debug.Log (Fighter);
-
 		displayCams = Fighter.GetComponentsInChildren<Camera> ();
 		displayCams [0].enabled = false;
 		displayCams [1].enabled = false;
@@ -150,18 +147,16 @@ public class NetworkManager :Photon.MonoBehaviour {
 */
 	}
 
-	
-	/*IEnumerator getFighter(){
+	[RPC]
+	public void createFighter(){
+		GameObject fighterPrefab = (GameObject)Resources.Load("fighter");
+		Fighter.GetComponent<FighterSettings>().teamId = groupId;
+		Fighter = Instantiate (fighterPrefab,Vector3.zero,Quaternion.identity)as GameObject;
 
-		while(Fighter==null){
-			Debug.Log("HERE");
-			Fighter = PhotonView.Find (spaceshipId).gameObject;
-			yield return null;
-		}
 
-		Debug.Log ("recived spaceship");
-		yield return new WaitForSeconds (0.5f);
-		Debug.Log ("corutine ended");
-	}*/
+		Fighters.GetComponent<FightersArray> ().fightersList.Add (Fighter);
+
+	}
+
 
 }
