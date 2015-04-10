@@ -84,7 +84,11 @@ public class NetworkManager :Photon.MonoBehaviour {
 		Debug.Log ("OnJoinedRoom");
 		getGroupId ();
 
-		if ((PhotonNetwork.player.ID % 2) != 0) {
+
+		Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity, 0);
+
+
+		/*if ((PhotonNetwork.player.ID % 2) != 0) {
 			Debug.Log("odd");
 
 			photonView.RPC("createFighter",PhotonTargets.AllBuffered);
@@ -93,7 +97,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 
 
-			//Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,/*groupId*/0);
+			//Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,0);
 
 			//gal.Add(Fighter);
 
@@ -107,14 +111,14 @@ public class NetworkManager :Photon.MonoBehaviour {
 			StartCoroutine(WaitForFighter());
 			//Debug.Log(Fighters.GetComponent<FightersArray>().fightersList.Count);
 
-		}
+		}*/
 		//Debug.Log (Fighter);
-		/*displayCams = Fighter.GetComponentsInChildren<Camera> ();
+		displayCams = Fighter.GetComponentsInChildren<Camera> ();
 		displayCams [0].enabled = false;
 		displayCams [1].enabled = false;
 		displayCams [2].enabled = false;
 
-		spawn ();*/
+		spawn ();
 
 	}
 
