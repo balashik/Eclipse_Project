@@ -22,13 +22,14 @@ public class fighterGuns : Photon.MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if ((Input.GetAxis ("leftGun") == 1)){
-			this.gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 1);
+			Debug.Log("leftGun");
+			gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 1);
 		}
 		if ((Input.GetAxis ("rightGun") == 1)){
-			this.gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 0);
+			gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 0);
 		}
 		if ((Input.GetAxis ("leftGun") == 1) && (Input.GetAxis ("rightGun") == 1)) {
-			this.gameObject.GetComponent<PhotonView> ().RPC ("shootBoth", PhotonTargets.All,null);
+			gameObject.GetComponent<PhotonView> ().RPC ("shootBoth", PhotonTargets.All,null);
 		}
 
 

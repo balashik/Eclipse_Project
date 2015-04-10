@@ -85,8 +85,10 @@ public class NetworkManager :Photon.MonoBehaviour {
 		getGroupId ();
 
 
-		Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity, 0);
-
+		Fighter = PhotonNetwork.Instantiate ("Fighter", Vector3.zero, Quaternion.identity, 0);
+		if (Fighter == null) {
+			Debug.Log (Fighter);		
+		}
 
 		/*if ((PhotonNetwork.player.ID % 2) != 0) {
 			Debug.Log("odd");
@@ -117,6 +119,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 		displayCams [0].enabled = false;
 		displayCams [1].enabled = false;
 		displayCams [2].enabled = false;
+		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
 
 		spawn ();
 
@@ -136,13 +139,15 @@ public class NetworkManager :Photon.MonoBehaviour {
 		}
 		cam.transform.position = mySpot.transform.position;
 		cam.transform.rotation = mySpot.transform.rotation;
-		
+
+
 		cam.transform.position = new Vector3 (ovrCam.transform.position.x, 5.319f, ovrCam.transform.position.z);//need to change the spawn height and then to remove this line
 		Fighter.GetComponent<networkFighter> ().myCam = cam;
 		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
 		cam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
 
-		/*oculus section
+		//oculus section
+		/*
 		ovrCam.transform.position = mySpot.transform.position;
 		ovrCam.transform.rotation = mySpot.transform.rotation;
 
