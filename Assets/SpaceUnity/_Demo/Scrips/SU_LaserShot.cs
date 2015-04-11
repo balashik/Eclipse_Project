@@ -24,6 +24,8 @@ using System.Collections;
 
 public class SU_LaserShot : MonoBehaviour {	
 	// Default life of laser beam
+
+	public int damage = -5;
 	public float life = 2.0f;
 	// Default velocity of laser beam
 	public float velocity = 1000.0f;
@@ -51,6 +53,7 @@ public class SU_LaserShot : MonoBehaviour {
 	}
 	
 	void Update () {
+		Debug.Log ("here");
 		// Change new position by the velocity magnitude (in the direction of transform.forward) and since
 		// we are in the update function we need to multiply by deltatime.
 		_newPos += transform.forward * _velocity.magnitude * Time.deltaTime;
@@ -68,7 +71,6 @@ public class SU_LaserShot : MonoBehaviour {
 				Debug.Log ("we hit"+ _hit.transform.collider.name);
 				// and if the transform we hit isn't a the ship that fired the weapon and the collider isn't just a trigger...
 				if (_hit.transform != firedBy && !_hit.collider.isTrigger) {
-
 					Health h = _hit.transform.GetComponent<Health>();
 					// Set the rotation of the impact effect to the normal of the impact surface (we wan't the impact effect to
 					// throw particles out from the object we just hit...
@@ -76,7 +78,16 @@ public class SU_LaserShot : MonoBehaviour {
 					// Instantiate the imapct effect at impact position
 					Instantiate(impactEffect, _hit.point, _rotation);
 					// If random number is a small value...
-					if (Random.Range(0,20) < 2) {
+					/*if (Random.Range(0,20) < 2) {
+						// Instantiate the explosion effect at the point of impact
+						Instantiate(explosionEffect, _hit.transform.position, _rotation);
+						// Destroy the game object that we just hit
+						Destroy(_hit.transform.gameObject);
+					}*/
+
+					if (h!=null){
+						//h.addDamage(damage);
+						h.GetComponent<PhotonView>().RPC("addDamage",PhotonTargets.All,damage);
 						// Instantiate the explosion effect at the point of impact
 						Instantiate(explosionEffect, _hit.transform.position, _rotation);
 						// Destroy the game object that we just hit

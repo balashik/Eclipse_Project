@@ -1,17 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\multiplayerLaserShot.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\singlePlayerManager.cs">
     <Files>
-      <File FileName="Assets\scripts\multiplayerLaserShot.cs" Line="11" Column="34" />
-      <File FileName="Assets\scripts\NetworkManager.cs" Line="55" Column="1" />
-      <File FileName="Assets\scripts\UI_Script.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\fighterGuns.cs" Line="110" Column="51" />
-      <File FileName="Assets\scripts\FighterSettings.cs" Line="17" Column="3" />
-      <File FileName="Assets\SpaceUnity\_Demo\Scrips\SU_LaserShot.cs" Line="21" Column="1" />
-      <File FileName="Assets\scripts\networkFighter.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\singlePlayerManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\Health.cs" Line="8" Column="12" />
+      <File FileName="Assets\scripts\fighterGuns.cs" Line="62" Column="65" />
+      <File FileName="Assets\SpaceUnity\_Demo\Scrips\SU_LaserShot.cs" Line="28" Column="25" />
+      <File FileName="Assets\scripts\multiplayerLaserShot.cs" Line="66" Column="50" />
+      <File FileName="Assets\scripts\Health.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\networkFighter.cs" Line="17" Column="1" />
+      <File FileName="Assets\scripts\singlePlayerManager.cs" Line="7" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
