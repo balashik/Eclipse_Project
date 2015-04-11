@@ -10,13 +10,14 @@ public class UI_Script : MonoBehaviour
 	public Canvas CanvasMain_Menu;
 	public Button ButtonSINGLEPLAYER;
 	public Button ButtonMULTIPLAYER;
-	public Button ButtonQUIT;
+	public Button ButtonExit;
 
 	//Sub menu elements
-	public Canvas CanvasSub_Menu;
+	public Canvas Role_Menu;
 	public Button ButtonPILOT;
 	public Button ButtonGUNNER;
 	public Button ButtonBACK;
+	private bool SingleMode=true;
 
     void Start ()
     {
@@ -26,11 +27,11 @@ public class UI_Script : MonoBehaviour
 		CanvasMain_Menu = CanvasMain_Menu.GetComponent<Canvas>();
 		ButtonSINGLEPLAYER = ButtonSINGLEPLAYER.GetComponent<Button> ();
 		ButtonMULTIPLAYER = ButtonMULTIPLAYER.GetComponent<Button> ();
-		ButtonQUIT = ButtonQUIT.GetComponent<Button>();
+		ButtonExit = ButtonExit.GetComponent<Button>();
 
 		//Initialize Sub menu elements
-		CanvasSub_Menu = CanvasSub_Menu.GetComponent<Canvas>();
-		CanvasSub_Menu.enabled = false;
+		Role_Menu = Role_Menu.GetComponent<Canvas>();
+		Role_Menu.enabled = false;
 		ButtonPILOT = ButtonPILOT.GetComponent<Button> ();
 		ButtonGUNNER = ButtonGUNNER.GetComponent<Button> ();
 		ButtonBACK = ButtonBACK.GetComponent<Button> ();
@@ -42,41 +43,60 @@ public class UI_Script : MonoBehaviour
     {
 		Debug.Log ("SinglePlayerPress");
 		CanvasMain_Menu.enabled = false; //disable the main menu
-		CanvasSub_Menu.enabled = true; //enable the Select Role menu
+		Role_Menu.enabled = true; //enable the Select Role menu
 
 		//Enable sub menu buttons.
 		ButtonPILOT.enabled = true;
 		ButtonGUNNER.enabled = true;
 		ButtonBACK.enabled = true;
+		Debug.Log ("set play mode single");
+		SingleMode=true;
     }
  
 	public void MultiPlayerPress() //this function will be used on our Exit button
 	{
 		Debug.Log ("MultiPlayerPress");
 		CanvasMain_Menu.enabled = false; //disable the main menu
-		CanvasSub_Menu.enabled = true; //enable the Select Role menu
+		Role_Menu.enabled = true; //enable the Select Role menu
 		
 		//Enable sub menu buttons.
 		ButtonPILOT.enabled = true;
 		ButtonGUNNER.enabled = true;
 		ButtonBACK.enabled = true;
-
+		Debug.Log ("set play mode multi");
+		SingleMode=false;
 	}
 
 	public void GunnerPress() //this function will be used on our Gunner button
 	{
 		Debug.Log ("GunnerPress");
 		CanvasMain_Menu.enabled = false;
-		CanvasSub_Menu.enabled = false;
+		Role_Menu.enabled = false;
 		//After role is selected the NetworkManager object script is called and user is connected to Photon server
+
+		Debug.Log ("checking play mode");
+		if (SingleMode == true) {
+			StartSingePlayerLevel ();
+				}
+		else {
+			StartMultiPlayerLevel ();
+		}
 	}
 
 	public void PilotPress() //this function will be used on our Pilot button
 	{
 		Debug.Log ("PilotPress");
 		CanvasMain_Menu.enabled = false;
-		CanvasSub_Menu.enabled = false;
+		Role_Menu.enabled = false;
 		//After role is selected the NetworkManager object script is called and user is connected to Photon server
+
+		Debug.Log ("checking play mode");
+		if (SingleMode == true) {
+			StartSingePlayerLevel ();
+		}
+		else {
+			StartMultiPlayerLevel ();
+		}
 	}
 
 	//Go back to main menu
@@ -84,17 +104,26 @@ public class UI_Script : MonoBehaviour
 	{
 		Debug.Log ("PressBack");
 		//Disable sub menu
-		CanvasSub_Menu.enabled = false;
+		Role_Menu.enabled = false;
 
 		//Re-enable main menu
 		CanvasMain_Menu.enabled = true;
+		Debug.Log ("set play mode single");
+		SingleMode=true;
 	}
 	
-    public void StartLevel () //this function will be used on our Play button
+    void StartSingePlayerLevel () //this function will be used on our Play button
     {
-	 	//Application.LoadLevel (1); //this will load our first level from our build settings. "1" is the second scene in our game 
+		Debug.Log ("loading singleplayer mode");
+	 	Application.LoadLevel ("singlePlayer"); //this will load our first level from our build settings. "1" is the second scene in our game 
     }
  
+	void StartMultiPlayerLevel () //this function will be used on our Play button
+	{
+		Debug.Log ("loading multiplayer mode");
+		Application.LoadLevel ("spaceship"); //this will load our first level from our build settings. "1" is the second scene in our game 
+	}
+
     public void QuitGamePress () //This function will be used on our "Yes" button in our Quit menu       
     {
 		Debug.Log ("QuitGamePress");

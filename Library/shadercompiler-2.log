@@ -1,56 +1,38 @@
 Base path: C:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-2-5076
+Pipe name: \\.\pipe\UnityShaderCompiler-2-9756
 Cmd: getPlatforms
 Cmd: compileSnippet
-  api=8 type=0 insize=2125 outsize=2267 kw= ok=1
+  api=4 type=0 insize=7565 outsize=4589 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=1 type=1 insize=2125 outsize=366 kw= ok=1
+  api=1 type=0 insize=7565 outsize=1599 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF VERTEXLIGHT_ON ok=1
 Cmd: compileSnippet
-  api=0 type=0 insize=7786 outsize=1088 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=8 type=0 insize=5359 outsize=5663 kw=POINT ok=1
 Cmd: compileSnippet
-  api=8 type=0 insize=7786 outsize=4534 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=1 type=0 insize=5359 outsize=799 kw=DIRECTIONAL_COOKIE ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=7786 outsize=6401 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF VERTEXLIGHT_ON ok=1
+  api=8 type=0 insize=5017 outsize=4242 kw= ok=1
 Cmd: compileSnippet
-  api=8 type=1 insize=7786 outsize=2974 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=8 type=0 insize=7013 outsize=5704 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
 Cmd: compileSnippet
-  api=8 type=1 insize=7786 outsize=3827 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=8 type=0 insize=7565 outsize=3843 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=1 type=0 insize=5479 outsize=864 kw=SPOT ok=1
+  api=1 type=1 insize=7565 outsize=398 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=1 type=0 insize=5479 outsize=799 kw=DIRECTIONAL_COOKIE ok=1
+  api=4 type=1 insize=7565 outsize=2347 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=0 type=1 insize=5479 outsize=1146 kw=DIRECTIONAL ok=1
+  api=8 type=1 insize=5359 outsize=4875 kw=DIRECTIONAL ok=1
 Cmd: compileSnippet
-  api=8 type=1 insize=5479 outsize=6248 kw=SPOT ok=1
+  api=8 type=1 insize=5359 outsize=5314 kw=DIRECTIONAL_COOKIE ok=1
 Cmd: compileSnippet
-  api=1 type=1 insize=5137 outsize=487 kw= ok=1
+  api=8 type=1 insize=5017 outsize=2462 kw= ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=7262 outsize=4028 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+  api=1 type=0 insize=7013 outsize=852 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=7262 outsize=4004 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
+  api=0 type=1 insize=7013 outsize=877 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
 Cmd: compileSnippet
-  api=1 type=1 insize=7262 outsize=1044 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+  api=1 type=1 insize=7013 outsize=618 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
 Cmd: compileSnippet
-  api=1 type=1 insize=7262 outsize=989 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=4339 outsize=1493 kw=DIRECTIONAL LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
-Cmd: compileSnippet
-  api=8 type=0 insize=4339 outsize=2048 kw=DIRECTIONAL LIGHTMAP_ON DIRLIGHTMAP_ON ok=1
-Cmd: compileSnippet
-  api=0 type=1 insize=4339 outsize=378 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=4339 outsize=1128 kw=DIRECTIONAL LIGHTMAP_ON DIRLIGHTMAP_ON ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=2297 outsize=253 kw=DIRECTIONAL ok=1
-Cmd: compileSnippet
-  api=8 type=0 insize=2297 outsize=4128 kw=SPOT ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=2297 outsize=412 kw=POINT ok=1
-Cmd: compileSnippet
-  api=0 type=1 insize=2297 outsize=630 kw=POINT_COOKIE ok=1
-Cmd: compileSnippet
-  api=8 type=1 insize=2297 outsize=2129 kw=DIRECTIONAL_COOKIE ok=1
+  api=8 type=1 insize=7013 outsize=4924 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
 Unhandled exception: Readfile from pipe failed. GLE=‏‏פעולת הצינור הסתיימה.
 
 

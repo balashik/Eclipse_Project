@@ -138,13 +138,13 @@
      <Compile Include="Assets\scripts\FighterSettings.cs" />
      <Compile Include="Assets\scripts\FightersArray.cs" />
      <Compile Include="Assets\scripts\Health Bar.cs" />
+     <Compile Include="Assets\scripts\Health.cs" />
      <Compile Include="Assets\scripts\NetworkManager.cs" />
      <Compile Include="Assets\scripts\UI_Script.cs" />
-     <Compile Include="Assets\scripts\coliderTriger.cs" />
      <Compile Include="Assets\scripts\displayCams.cs" />
      <Compile Include="Assets\scripts\fighterGuns.cs" />
      <Compile Include="Assets\scripts\fighterMotor.cs" />
-     <Compile Include="Assets\scripts\healthBar.cs" />
+     <Compile Include="Assets\scripts\multiplayerLaserShot.cs" />
      <Compile Include="Assets\scripts\networkFighter.cs" />
      <Compile Include="Assets\scripts\newNetworkManager.cs" />
      <Compile Include="Assets\scripts\singlePlayerFighterGuns.cs" />

@@ -106,8 +106,8 @@ public class fighterGuns : Photon.MonoBehaviour {
 						// Instantiate the laser prefab at position with the spaceships rotation
 						Transform gunShot = (Transform)Instantiate (gunnerShotPrefab, pos, transform.rotation);
 						// Specify which transform it was that fired this round so we can ignore it for collision/hit
-						gunShot.GetComponent<SU_LaserShot> ().firedBy = transform;
-						Debug.Log (gunShot.GetComponent<SU_LaserShot> ().ToString ());
+						gunShot.GetComponent<multiplayerLaserShot> ().firedBy = transform;
+						Debug.Log (gunShot.GetComponent<multiplayerLaserShot> ().ToString ());
 						counter = 0;
 				}
 
@@ -124,7 +124,7 @@ public class fighterGuns : Photon.MonoBehaviour {
 				// Instantiate the laser prefab at position with the spaceships rotation
 				Transform gunShot = (Transform)Instantiate (gunnerShotPrefab, pos, transform.rotation);
 				// Specify which transform it was that fired this round so we can ignore it for collision/hit
-				gunShot.GetComponent<SU_LaserShot> ().firedBy = transform;
+				gunShot.GetComponent<multiplayerLaserShot> ().firedBy = transform;
 				counter = 0;
 				
 			}

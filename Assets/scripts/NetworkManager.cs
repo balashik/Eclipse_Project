@@ -17,6 +17,13 @@ public class NetworkManager :Photon.MonoBehaviour {
 	Camera[] displayCams;
 	public GameObject Fighters;
 	
+
+	void Start(){
+		whoAmI = 0; //Pilot
+		PhotonNetwork.ConnectUsingSettings("alpha");
+	}
+
+
 	void getSpaceshipId(){
 		if (PhotonNetwork.player.ID % 2 == 0) {
 			spaceshipId = (PhotonNetwork.player.ID - 1) + 1000;
@@ -44,20 +51,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 		Debug.Log("Testttttttttttttttttttttttttttttttttttttttttttttttt");
 		return Fighters.GetComponent<FightersArray> ().fightersList [0];
 	}*/
-
-	public void ConnectAsPliot(){
-
-		Debug.Log("ConnectAsPliot to PhotonServer");
-		PhotonNetwork.ConnectUsingSettings("alpha");
-		whoAmI = 0; //Pilot
-	}
-
-	public void ConnectAsGunner(){
-		Debug.Log("ConnectAsGunner to PhotonServer");
-		PhotonNetwork.ConnectUsingSettings("alpha");
-		whoAmI = 1; //Gunner
-	}
-
+	
 	void OnGUI(){
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
 		GUILayout.Label ("Number of players in room "+PhotonNetwork.countOfPlayers.ToString());

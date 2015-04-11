@@ -65,8 +65,11 @@ public class SU_LaserShot : MonoBehaviour {
 			RaycastHit _hit;
 			// If the raycast from previous position in the specified direction at (or before) the distance...
 			if (Physics.Raycast(_oldPos, _direction, out _hit, _distance)) {
+				Debug.Log ("we hit"+ _hit.transform.collider.name);
 				// and if the transform we hit isn't a the ship that fired the weapon and the collider isn't just a trigger...
-				if (_hit.transform != firedBy && !_hit.collider.isTrigger) {		
+				if (_hit.transform != firedBy && !_hit.collider.isTrigger) {
+
+					Health h = _hit.transform.GetComponent<Health>();
 					// Set the rotation of the impact effect to the normal of the impact surface (we wan't the impact effect to
 					// throw particles out from the object we just hit...
 					Quaternion _rotation = Quaternion.FromToRotation(Vector3.up, _hit.normal);

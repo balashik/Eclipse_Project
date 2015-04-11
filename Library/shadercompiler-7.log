@@ -1,47 +1,35 @@
 Base path: C:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-7-1080
+Pipe name: \\.\pipe\UnityShaderCompiler-7-8484
 Cmd: getPlatforms
 Cmd: compileSnippet
-  api=4 type=0 insize=7786 outsize=2761 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=8 type=0 insize=7565 outsize=6793 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=7786 outsize=4678 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+  api=0 type=0 insize=7565 outsize=2331 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF VERTEXLIGHT_ON ok=1
 Cmd: compileSnippet
-  api=1 type=0 insize=7786 outsize=1741 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF VERTEXLIGHT_ON ok=1
+  api=8 type=0 insize=5359 outsize=4510 kw=DIRECTIONAL ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=7786 outsize=2030 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=8 type=0 insize=5359 outsize=5663 kw=POINT_COOKIE ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=7786 outsize=2574 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=4 type=0 insize=7013 outsize=3842 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
 Cmd: compileSnippet
-  api=8 type=0 insize=5479 outsize=5663 kw=POINT ok=1
+  api=0 type=0 insize=7565 outsize=1115 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=0 type=0 insize=5479 outsize=1371 kw=DIRECTIONAL_COOKIE ok=1
+  api=8 type=1 insize=7565 outsize=2641 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=0 type=1 insize=5479 outsize=1363 kw=POINT ok=1
+  api=4 type=1 insize=7565 outsize=3703 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=1 type=1 insize=5479 outsize=1248 kw=POINT_COOKIE ok=1
+  api=0 type=1 insize=7565 outsize=734 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=8 type=1 insize=5479 outsize=5314 kw=DIRECTIONAL_COOKIE ok=1
+  api=0 type=1 insize=5359 outsize=1146 kw=DIRECTIONAL ok=1
 Cmd: compileSnippet
-  api=8 type=0 insize=7262 outsize=5891 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+  api=4 type=1 insize=5359 outsize=4150 kw=SPOT ok=1
 Cmd: compileSnippet
-  api=1 type=1 insize=7262 outsize=768 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+  api=8 type=0 insize=7013 outsize=5688 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=7262 outsize=2639 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
+  api=4 type=1 insize=7013 outsize=3257 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
 Cmd: compileSnippet
-  api=8 type=1 insize=952 outsize=1138 kw= ok=1
-Cmd: compileSnippet
-  api=0 type=0 insize=4339 outsize=436 kw=DIRECTIONAL LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=4339 outsize=4329 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF VERTEXLIGHT_ON ok=1
-Cmd: compileSnippet
-  api=0 type=1 insize=4339 outsize=314 kw=DIRECTIONAL LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=4339 outsize=225 kw=DIRECTIONAL LIGHTMAP_ON DIRLIGHTMAP_ON ok=1
-Cmd: compileSnippet
-  api=8 type=0 insize=2297 outsize=2608 kw=DIRECTIONAL ok=1
-Cmd: compileSnippet
-  api=1 type=0 insize=2297 outsize=383 kw=POINT_COOKIE ok=1
-Cmd: compileSnippet
-  api=0 type=1 insize=2297 outsize=756 kw=SPOT ok=1
-Cmd: compileSnippet
-  api=1 type=1 insize=2297 outsize=460 kw=POINT_COOKIE ok=1
+  api=1 type=1 insize=7013 outsize=894 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
+Unhandled exception: Readfile from pipe failed. GLE=‏‏פעולת הצינור הסתיימה.
+
+
+Quitting shader compiler process
