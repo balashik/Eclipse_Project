@@ -7,21 +7,26 @@ public class networkFighter : Photon.MonoBehaviour {
 	Vector3 realPosition = Vector3.zero;
 	Quaternion realRotation = Quaternion.identity;
 
-	//public OVRCameraRig myCam;
-	public Camera myCam;
+	public OVRCameraRig myCam;
+	//public Camera myCam;
 	public Camera[] displayCams;
 	public bool amIPilot;
-	void Update(){
+	void Start(){
 		if (photonView.isMine) {
-			gameObject.GetComponent<fighterMotor>().enabled = true;
-			gameObject.GetComponent<fighterGuns>().enabled = true;
+			gameObject.GetComponent<fighterMotor> ().enabled = true;
+			gameObject.GetComponent<fighterGuns> ().enabled = true;
 			displayCams [0].enabled = true;
 			displayCams [1].enabled = true; 
 			displayCams [2].enabled = true;
-			//myCam.gameObject.SetActive(true);
-			myCam.enabled = true;
+			myCam.camera.enabled = true;
+			//myCam.enabled = true;
 
 
+		} else {
+				}
+	}
+	void Update(){
+		if (photonView.isMine) {
 		
 		} else {
 
