@@ -17,40 +17,17 @@ public class NetworkManager :Photon.MonoBehaviour {
 	Camera[] displayCams;
 	public GameObject Fighters;
 	
+	void Awake(){
 
+
+	}
 	void Start(){
+		ovrCam.camera.enabled = false;
+		Debug.Log ("Start");
 		whoAmI = 0; //Pilot
-		PhotonNetwork.ConnectUsingSettings("alpha");
+		PhotonNetwork.ConnectUsingSettings("Alpha");
 	}
 
-
-	void getSpaceshipId(){
-		if (PhotonNetwork.player.ID % 2 == 0) {
-			spaceshipId = (PhotonNetwork.player.ID - 1) + 1000;
-			return;
-		} else {
-			spaceshipId = PhotonNetwork.player.ID+1000;
-			return;
-		}
-	
-	}
-
-	void getGroupId(){
-		int num = PhotonNetwork.player.ID;
-		if (num % 2 == 0) {
-			groupId = (num / 2) - 1;
-			return;
-		} else {
-			groupId = num / 2;
-			return;
-		}
-		Debug.Log (groupId);
-	}
-
-	/*GameObject findCurrentFighter(){
-		Debug.Log("Testttttttttttttttttttttttttttttttttttttttttttttttt");
-		return Fighters.GetComponent<FightersArray> ().fightersList [0];
-	}*/
 	
 	void OnGUI(){
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
@@ -63,6 +40,14 @@ public class NetworkManager :Photon.MonoBehaviour {
 	}
 
 	void OnJoinedLobby(){
+		Debug.Log ("OnJoinedToLobby");
+
+		RoomOptions roomOptions = new RoomOptions (){isVisible = true};
+		PhotonNetwork.JoinOrCreateRoom("mmo",roomOptions,TypedLobby.Default);
+	}
+	
+
+	/*void OnJoinedLobby(){
 
 		Debug.Log("OnJoinedLobby");
 		PhotonNetwork.JoinRandomRoom ();
@@ -73,46 +58,16 @@ public class NetworkManager :Photon.MonoBehaviour {
 	}
 	void OnCreateRoom(){
 		Debug.Log ("OnCreateRoom");
-	}
+	}*/
 	void OnJoinedRoom(){
 		Debug.Log ("OnJoinedRoom");
 		getGroupId ();
 
 
 		Fighter = PhotonNetwork.Instantiate ("Fighter", Vector3.zero, Quaternion.identity, 0);
-		if (Fighter == null) {
-			Debug.Log (Fighter);		
-		}
 
-		/*if ((PhotonNetwork.player.ID % 2) != 0) {
-			Debug.Log("odd");
-
-			photonView.RPC("createFighter",PhotonTargets.AllBuffered);
-
-			//GameObject fighterPrefab = (GameObject)Resources.Load("fighter");
-
-
-
-			//Fighter = PhotonNetwork.Instantiate ("fighter", Vector3.zero, Quaternion.identity,0);
-
-			//gal.Add(Fighter);
-
-			//Fighter = PhotonNetwork.InstantiateSceneObject("fighter",Vector3.zero,Quaternion.identity,0,null);
-			//photonView.RPC("setIdtoFighter",PhotonTargets.All,null);
-			//Fighter.GetComponent<FighterSettings>().groupId = groupId;
-			Debug.Log (GameObject.Find("Fighter(Clone)").ToString());
-
-		} else {
-			Debug.Log("even");
-			StartCoroutine(WaitForFighter());
-			//Debug.Log(Fighters.GetComponent<FightersArray>().fightersList.Count);
-
-		}*/
-		//Debug.Log (Fighter);
 		displayCams = Fighter.GetComponentsInChildren<Camera> ();
-		displayCams [0].enabled = false;
-		displayCams [1].enabled = false;
-		displayCams [2].enabled = false;
+
 		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
 
 		spawn ();
@@ -131,24 +86,46 @@ public class NetworkManager :Photon.MonoBehaviour {
 		} else {
 			Fighter.GetComponent<networkFighter> ().amIPilot = false;
 		}
+
+		/*
 		cam.transform.position = mySpot.transform.position;
 		cam.transform.rotation = mySpot.transform.rotation;
-
-
-		cam.transform.position = new Vector3 (ovrCam.transform.position.x, 5.319f, ovrCam.transform.position.z);//need to change the spawn height and then to remove this line
 		Fighter.GetComponent<networkFighter> ().myCam = cam;
 		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
 		cam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
-
+*/
 		//oculus section
-		/*
+
 		ovrCam.transform.position = mySpot.transform.position;
 		ovrCam.transform.rotation = mySpot.transform.rotation;
 
-		ovrCam.transform.position = new Vector3 (ovrCam.transform.position.x, 5.319f, ovrCam.transform.position.z);//need to change the spawn height and then to remove this line
+
 		Fighter.GetComponent<networkFighter> ().myCam = ovrCam;
 		ovrCam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
-*/
+
+	}
+
+	void getSpaceshipId(){
+		if (PhotonNetwork.player.ID % 2 == 0) {
+			spaceshipId = (PhotonNetwork.player.ID - 1) + 1000;
+			return;
+		} else {
+			spaceshipId = PhotonNetwork.player.ID+1000;
+			return;
+		}
+		
+	}
+	
+	void getGroupId(){
+		int num = PhotonNetwork.player.ID;
+		if (num % 2 == 0) {
+			groupId = (num / 2) - 1;
+			return;
+		} else {
+			groupId = num / 2;
+			return;
+		}
+		Debug.Log (groupId);
 	}
 
 	IEnumerator WaitForFighter()
