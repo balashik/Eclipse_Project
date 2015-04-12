@@ -1,9 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\networkFighter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\UI_Script.cs">
     <Files>
-      <File FileName="Assets\scripts\networkFighter.cs" Line="21" Column="24" />
-      <File FileName="Assets\scripts\NetworkManager.cs" Line="25" Column="33" />
+      <File FileName="Assets\scripts\LoadingScreen.cs" Line="10" Column="2" />
+      <File FileName="Assets\scripts\UI_Script.cs" Line="157" Column="6" />
+      <File FileName="Assets\scripts\singlePlayerFighterGuns.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\singleplayerLaserShot.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\Health.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\networkFighter.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\NetworkManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\SpaceUnity\Editor\SU_AsteroidFieldEditor.cs" Line="1" Column="1" />
+      <File FileName="Assets\SpaceUnity\_Demo\Scrips\SU_LaserShot.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\fighterMotor.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

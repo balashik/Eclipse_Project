@@ -139,16 +139,17 @@
      <Compile Include="Assets\scripts\FightersArray.cs" />
      <Compile Include="Assets\scripts\Health Bar.cs" />
      <Compile Include="Assets\scripts\Health.cs" />
+     <Compile Include="Assets\scripts\LoadingScreen.cs" />
      <Compile Include="Assets\scripts\NetworkManager.cs" />
      <Compile Include="Assets\scripts\UI_Script.cs" />
      <Compile Include="Assets\scripts\displayCams.cs" />
      <Compile Include="Assets\scripts\fighterGuns.cs" />
      <Compile Include="Assets\scripts\fighterMotor.cs" />
-     <Compile Include="Assets\scripts\multiplayerLaserShot.cs" />
      <Compile Include="Assets\scripts\networkFighter.cs" />
      <Compile Include="Assets\scripts\newNetworkManager.cs" />
      <Compile Include="Assets\scripts\singlePlayerFighterGuns.cs" />
      <Compile Include="Assets\scripts\singlePlayerManager.cs" />
+     <Compile Include="Assets\scripts\singleplayerLaserShot.cs" />
      <Compile Include="Assets\scripts\spaceShipController.cs" />
      <Compile Include="Assets\scripts\spawnSpot.cs" />
      <Compile Include="Assets\scripts\thrusters.cs" />
@@ -169,9 +170,6 @@
      <None Include="Assets\Plugins\x86\donotdelete.txt" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
- <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>D:/fpj/unity/alpha/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

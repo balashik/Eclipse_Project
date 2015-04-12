@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: 77c16461be3dd044eae5595baa940f60
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gunAimRigidBody: {instanceID: 0}
+  - gunnerShotPrefab: {fileID: 400000, guid: a7b21eb29c5551c4d91e99e6ee2b1854, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
