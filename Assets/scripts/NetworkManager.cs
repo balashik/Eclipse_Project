@@ -11,6 +11,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 	public OVRCameraRig ovrCam;
 	public Camera cam;//test cam
 	spawnSpot[] spots;
+	FighterSpawningSpot[] fighterSpots;
 	int spaceshipId;
 	int groupId; 
 	GameObject Fighter;
@@ -26,6 +27,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 		Debug.Log ("Start");
 		whoAmI = 0; //Pilot
 		PhotonNetwork.ConnectUsingSettings("Alpha");
+		fighterSpots = GameObject.FindObjectsOfType<FighterSpawningSpot>();
 	}
 
 	
@@ -62,9 +64,12 @@ public class NetworkManager :Photon.MonoBehaviour {
 	void OnJoinedRoom(){
 		Debug.Log ("OnJoinedRoom");
 		getGroupId ();
-
-
-		Fighter = PhotonNetwork.Instantiate ("Fighter", Vector3.zero, Quaternion.identity, 0);
+		if (fighterSpots == null) {
+			Debug.LogError ("unable spawn a Fighter to a Fighter spot, fighterSpots = null");
+			return;
+		}
+		FighterSpawningSpot myFighterSpot = fighterSpots [Random.Range (0, fighterSpots.Length)];
+		Fighter = PhotonNetwork.Instantiate ("Fighter", myFighterSpot.transform.position, myFighterSpot.transform.rotation, 0);
 
 		displayCams = Fighter.GetComponentsInChildren<Camera> ();
 
@@ -76,9 +81,11 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 	void spawn(){
 
+
 		spots = Fighter.GetComponentsInChildren<spawnSpot>();
 		if (spots == null) {
-			Debug.LogError ("unable spawn to a spot, spots = null");
+			Debug.LogError ("unable spawn a player to a player spot, spots = null");
+			return;
 		}
 		spawnSpot mySpot = spots [whoAmI];
 		if (whoAmI == 0) {

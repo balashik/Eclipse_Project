@@ -10,7 +10,7 @@ public class singlePlayerManager : MonoBehaviour {
 
 
 	void Awake(){
-				
+				PhotonNetwork.offlineMode = true;
 				foreach (Camera c in displayCams) {
 						c.enabled = true;		
 		

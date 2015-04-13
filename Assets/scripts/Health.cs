@@ -4,9 +4,9 @@ using System.Collections;
 public class Health : Photon.MonoBehaviour {
 	
 	public Transform explosionEffect;
-	public int health;
+	public int health = 100;
 	void Awake(){
-		health = gameObject.GetComponent<FighterSettings> ().health; 
+		//health = gameObject.GetComponent<FighterSettings> ().health; 
 	
 	}
 	[RPC]

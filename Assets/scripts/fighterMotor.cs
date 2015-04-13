@@ -54,6 +54,5 @@ public class fighterMotor : MonoBehaviour {
 		
 		
 		myRigidBody.velocity += transform.forward * (speed);
-		Debug.Log (speed );
 	}
 }
