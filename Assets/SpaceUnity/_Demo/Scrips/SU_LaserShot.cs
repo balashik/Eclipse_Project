@@ -91,7 +91,7 @@ public class SU_LaserShot : MonoBehaviour {
 						// Instantiate the explosion effect at the point of impact
 						Instantiate(explosionEffect, _hit.transform.position, _rotation);
 						// Destroy the game object that we just hit
-						Destroy(_hit.transform.gameObject);
+						//Destroy(_hit.transform.gameObject);
 					}
 					// Destroy the laser shot game object
 					Destroy(gameObject);

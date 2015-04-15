@@ -57,7 +57,7 @@ public class UI_Script : MonoBehaviour
 
 		//Initialize LoadingScreen elements
 		loadProgress = 0;
-		loadBackground.SetActive (false);
+
 		loadText.SetActive (false);
 		loadProgressBar.SetActive (false);
 		loadingScreen.enabled = false;
@@ -215,16 +215,15 @@ public class UI_Script : MonoBehaviour
 
 	IEnumerator loadingScreenDisplay(string levelName){
 		loadingScreen.enabled = true;
-		loadBackground.SetActive (true);
 		loadText.SetActive (true);
 		loadProgressBar.SetActive (true);
 
 		loadProgressBar.transform.localScale = new Vector3 (loadProgress, loadProgressBar.transform.localScale.y, loadProgressBar.transform.localScale.z);
-		loadText.GetComponent<Text>().text = "Loading progress" + loadProgress+"%";
+
 
 		AsyncOperation async = Application.LoadLevelAsync (levelName);
 		while (!async.isDone) {
-
+			loadText.GetComponent<Text>().CrossFadeAlpha(0,1f,false);
 			loadProgress = (int)(async.progress*100);
 			loadProgressBar.transform.localScale = new Vector3 (async.progress, loadProgressBar.transform.localScale.y, loadProgressBar.transform.localScale.z);
 			yield return null;	

@@ -7,38 +7,57 @@ using System.Collections.Generic;
 public class NetworkManager :Photon.MonoBehaviour {
 	
 
-	int whoAmI;
+
 	public OVRCameraRig ovrCam;
 	public Camera cam;//test cam
+	public bool amIAlive;
+	public float respawnTime;
+	public GameObject Fighters;
+
+	int whoAmI;
 	spawnSpot[] spots;
 	FighterSpawningSpot[] fighterSpots;
 	int spaceshipId;
 	int groupId; 
 	GameObject Fighter;
 	Camera[] displayCams;
-	public GameObject Fighters;
-	
-	void Awake(){
 
 
-	}
 	void Start(){
+		amIAlive = true;
 		ovrCam.camera.enabled = false;
 		Debug.Log ("Start");
 		whoAmI = 0; //Pilot
 		PhotonNetwork.ConnectUsingSettings("Alpha");
 		fighterSpots = GameObject.FindObjectsOfType<FighterSpawningSpot>();
+
+	}
+
+	void Update(){
+		if (amIAlive == false) {
+			if (respawnTime > 0) {
+
+				respawnTime -= Time.deltaTime;		
+			}
+			if (respawnTime <= 0) {
+				spawn ();
+				
+			}
+		}
 	}
 
 	
 	void OnGUI(){
+		Debug.Log (PhotonNetwork.connectionStateDetailed.ToString ());
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
 		GUILayout.Label ("Number of players in room "+PhotonNetwork.countOfPlayers.ToString());
 		GUILayout.Label ("player ID " + PhotonNetwork.player.ID);
 		if (!(Fighter == null)) {
-			GUILayout.Label ("Number of players in room "+Fighter.transform.position.ToString());		
+			GUILayout.Label ("Number of players in room "+Fighter.transform.position.ToString());
 		}
-//		
+		if(amIAlive){
+			GUI.Label (new Rect (Screen.width / 2, 10, 300, 300), "Respawn in:" + (int)respawnTime);
+		}
 	}
 
 	void OnJoinedLobby(){
@@ -48,43 +67,34 @@ public class NetworkManager :Photon.MonoBehaviour {
 		PhotonNetwork.JoinOrCreateRoom("mmo",roomOptions,TypedLobby.Default);
 	}
 	
-
-	/*void OnJoinedLobby(){
-
-		Debug.Log("OnJoinedLobby");
-		PhotonNetwork.JoinRandomRoom ();
-	}
-	void OnPhotonRandomJoinFailed(){
-		PhotonNetwork.CreateRoom (null); // need to change room name to something with value
-		Debug.Log("OnPhotonJoinRoomFailed");
-	}
-	void OnCreateRoom(){
-		Debug.Log ("OnCreateRoom");
-	}*/
+	
 	void OnJoinedRoom(){
 		Debug.Log ("OnJoinedRoom");
 		getGroupId ();
-		if (fighterSpots == null) {
-			Debug.LogError ("unable spawn a Fighter to a Fighter spot, fighterSpots = null");
-			return;
-		}
-		FighterSpawningSpot myFighterSpot = fighterSpots [Random.Range (0, fighterSpots.Length)];
-		Fighter = PhotonNetwork.Instantiate ("Fighter", myFighterSpot.transform.position, myFighterSpot.transform.rotation, 0);
 
-		displayCams = Fighter.GetComponentsInChildren<Camera> ();
-
-		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
 
 		spawn ();
 
 	}
 
 	void spawn(){
+		if (fighterSpots == null) {
+			Debug.LogWarning ("unable spawn a Fighter to a Fighter spot, fighterSpots = null");
+			return;
+		}
+
+		FighterSpawningSpot myFighterSpot = fighterSpots [Random.Range (0, fighterSpots.Length)];
+		Fighter = PhotonNetwork.Instantiate ("Fighter", myFighterSpot.transform.position, myFighterSpot.transform.rotation, 0);
+		amIAlive = true;
+		
+		displayCams = Fighter.GetComponentsInChildren<Camera> ();
+		
+		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
 
 
 		spots = Fighter.GetComponentsInChildren<spawnSpot>();
 		if (spots == null) {
-			Debug.LogError ("unable spawn a player to a player spot, spots = null");
+			Debug.LogWarning ("unable spawn a player to a player spot, spots = null");
 			return;
 		}
 		spawnSpot mySpot = spots [whoAmI];
@@ -94,13 +104,6 @@ public class NetworkManager :Photon.MonoBehaviour {
 			Fighter.GetComponent<networkFighter> ().amIPilot = false;
 		}
 
-		/*
-		cam.transform.position = mySpot.transform.position;
-		cam.transform.rotation = mySpot.transform.rotation;
-		Fighter.GetComponent<networkFighter> ().myCam = cam;
-		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
-		cam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
-*/
 		//oculus section
 
 		ovrCam.transform.position = mySpot.transform.position;
@@ -165,6 +168,9 @@ public class NetworkManager :Photon.MonoBehaviour {
 		Fighters.GetComponent<FightersArray> ().fightersList.Add (Fighter);
 
 	}
+
+
+
 
 
 }

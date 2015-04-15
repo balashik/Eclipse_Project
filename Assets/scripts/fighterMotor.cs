@@ -42,17 +42,21 @@ public class fighterMotor : MonoBehaviour {
 
 	void FixedUpdate(){
 		float speed = Input.GetAxis ("Speed") * acceleration * -1;
-		if (speed >= 1.5) {
-			speed=1.5f;		
+		if (speed >= 3) {
+			speed=3f;		
 		}
 		if (speed <= -1) {
 			speed=-1f;
 		}
+
+		Debug.Log ("horizontal"+Input.GetAxis ("Horizontal") );
+		Debug.Log ("vertical"+Input.GetAxis ("Vertical") );
+
 		myRigidBody.AddRelativeTorque (new Vector3 (0, 0, -Input.GetAxis ("Horizontal") * roleRate * myRigidBody.mass));
 		myRigidBody.AddRelativeTorque (new Vector3 (0, Input.GetAxis ("Horizontal") * yawRate * myRigidBody.mass, 0));
 		myRigidBody.AddRelativeTorque (new Vector3 (Input.GetAxis ("Vertical") * pitchRate * myRigidBody.mass, 0, 0));
 		
 		
-		myRigidBody.velocity += transform.forward * (speed);
+		myRigidBody.velocity += transform.forward * speed;
 	}
 }

@@ -138,7 +138,6 @@
      <Compile Include="Assets\scripts\FighterSettings.cs" />
      <Compile Include="Assets\scripts\FighterSpawningSpot.cs" />
      <Compile Include="Assets\scripts\FightersArray.cs" />
-     <Compile Include="Assets\scripts\Health Bar.cs" />
      <Compile Include="Assets\scripts\Health.cs" />
      <Compile Include="Assets\scripts\LoadingScreen.cs" />
      <Compile Include="Assets\scripts\NetworkManager.cs" />

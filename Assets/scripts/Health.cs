@@ -12,6 +12,9 @@ public class Health : Photon.MonoBehaviour {
 	[RPC]
 	public void addDamage(int num){
 		health += num;
+		if (health <= 0) {
+			destroyFighter();		
+		}
 	}
 	public int getHealth(){
 		return health;
@@ -23,7 +26,13 @@ public class Health : Photon.MonoBehaviour {
 		if(gameObject.GetComponent<PhotonView>().instantiationId==0){
 			Destroy(gameObject);
 		}else{
-			if(PhotonNetwork.isMasterClient){
+			if(GetComponent<PhotonView>().isMine){
+				if (gameObject.tag=="Fighter"){
+					GameObject.Find("OVRCameraRig");
+					NetworkManager nm = GameObject.FindObjectOfType<NetworkManager>();
+					nm.amIAlive = false;
+					nm.respawnTime = 10f;
+				}
 				PhotonNetwork.Destroy (gameObject);
 			}
 		}
