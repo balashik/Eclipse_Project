@@ -13,12 +13,12 @@ public class networkFighter : Photon.MonoBehaviour {
 	public bool amIPilot;
 	void Start(){
 		if (photonView.isMine) {
-			gameObject.GetComponent<fighterMotor> ().enabled = true;
-			gameObject.GetComponent<fighterGuns> ().enabled = true;
+			gameObject.GetComponent<fighterGuns>().enabled = true;
+			gameObject.GetComponent<fighterMotor>().enabled = true;
 			displayCams [0].enabled = true;
 			displayCams [1].enabled = true; 
 			displayCams [2].enabled = true;
-			myCam.camera.enabled = true;
+			myCam.enabled = true;
 			//myCam.enabled = true;
 
 

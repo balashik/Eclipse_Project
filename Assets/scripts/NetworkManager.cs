@@ -25,7 +25,6 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 	void Start(){
 		amIAlive = true;
-		ovrCam.camera.enabled = false;
 		Debug.Log ("Start");
 		whoAmI = 0; //Pilot
 		PhotonNetwork.ConnectUsingSettings("Alpha");
