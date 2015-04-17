@@ -77,39 +77,31 @@ public class NetworkManager :Photon.MonoBehaviour {
 	}
 
 	void spawn(){
+		//where the fighter is spawning
 		if (fighterSpots == null) {
 			Debug.LogWarning ("unable spawn a Fighter to a Fighter spot, fighterSpots = null");
 			return;
 		}
-
 		FighterSpawningSpot myFighterSpot = fighterSpots [Random.Range (0, fighterSpots.Length)];
+
+
+		//instantiating a fighter into the game
 		Fighter = PhotonNetwork.Instantiate ("Fighter", myFighterSpot.transform.position, myFighterSpot.transform.rotation, 0);
 		amIAlive = true;
 		
-		displayCams = Fighter.GetComponentsInChildren<Camera> ();
-		
-		Fighter.GetComponent<networkFighter> ().displayCams = displayCams;
 
 
+
+		//spawning he player into the location in the fighter
 		spots = Fighter.GetComponentsInChildren<spawnSpot>();
 		if (spots == null) {
 			Debug.LogWarning ("unable spawn a player to a player spot, spots = null");
 			return;
 		}
 		spawnSpot mySpot = spots [whoAmI];
-		if (whoAmI == 0) {
-			Fighter.GetComponent<networkFighter> ().amIPilot = true;
-		} else {
-			Fighter.GetComponent<networkFighter> ().amIPilot = false;
-		}
-
-		//oculus section
-
+		Fighter.GetComponent<networkFighter> ().myCam = ovrCam;
 		ovrCam.transform.position = mySpot.transform.position;
 		ovrCam.transform.rotation = mySpot.transform.rotation;
-
-
-		Fighter.GetComponent<networkFighter> ().myCam = ovrCam;
 		ovrCam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
 
 	}
@@ -137,36 +129,6 @@ public class NetworkManager :Photon.MonoBehaviour {
 		Debug.Log (groupId);
 	}
 
-	IEnumerator WaitForFighter()
-	{
-		Debug.Log ("entered corutine");
-		while (Fighters.GetComponent<FightersArray>().fightersList.Count==0) {
-				
-			yield return new WaitForSeconds(0.5f);
-		}
-
-		Debug.Log ("Corutine finished");
-		Fighter = Fighters.GetComponent<FightersArray>().fightersList[0];
-
-		displayCams = Fighter.GetComponentsInChildren<Camera> ();
-		displayCams [0].enabled = false;
-		displayCams [1].enabled = false;
-		displayCams [2].enabled = false;
-		
-		spawn ();
-
-	}
-
-	[RPC]
-	public void createFighter(){
-		GameObject fighterPrefab = (GameObject)Resources.Load("fighter");
-
-		Fighter = Instantiate (fighterPrefab,Vector3.zero,Quaternion.identity)as GameObject;
-		Fighter.GetComponent<FighterSettings>().teamId = groupId;
-
-		Fighters.GetComponent<FightersArray> ().fightersList.Add (Fighter);
-
-	}
 
 
 
