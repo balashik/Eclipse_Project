@@ -22,10 +22,8 @@ public class UI_Script : MonoBehaviour
 
 	//Loading Screen
 	public Canvas loadingScreen;
-	public GameObject loadBackground;
-	public GameObject loadText;
-	public GameObject loadProgressBar;
-	int loadProgress;
+
+
 
 	//Settings section elements
 	public Canvas Canvas_Sett;
@@ -56,12 +54,7 @@ public class UI_Script : MonoBehaviour
 		Canvas_Sett.enabled = false;
 
 		//Initialize LoadingScreen elements
-		loadProgress = 0;
-
-		loadText.SetActive (false);
-		loadProgressBar.SetActive (false);
 		loadingScreen.enabled = false;
-
 		//Allpurpose Back button
 		ButtonBACK = ButtonBACK.GetComponent<Button> ();
 
@@ -215,17 +208,13 @@ public class UI_Script : MonoBehaviour
 
 	IEnumerator loadingScreenDisplay(string levelName){
 		loadingScreen.enabled = true;
-		loadText.SetActive (true);
-		loadProgressBar.SetActive (true);
 
-		loadProgressBar.transform.localScale = new Vector3 (loadProgress, loadProgressBar.transform.localScale.y, loadProgressBar.transform.localScale.z);
+
 
 
 		AsyncOperation async = Application.LoadLevelAsync (levelName);
 		while (!async.isDone) {
-			loadText.GetComponent<Text>().CrossFadeAlpha(0,1f,false);
-			loadProgress = (int)(async.progress*100);
-			loadProgressBar.transform.localScale = new Vector3 (async.progress, loadProgressBar.transform.localScale.y, loadProgressBar.transform.localScale.z);
+
 			yield return null;	
 		}
 
