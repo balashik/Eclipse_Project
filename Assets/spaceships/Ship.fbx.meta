@@ -1,0 +1,733 @@
+fileFormatVersion: 2
+guid: a578e18a6a41a8043a23bd76116c4907
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: cockpit2_usemtl_1
+    100002: cockpit2_usemtl_1 1
+    100004: cockpit2_usemtl_2
+    100006: cockpit2_usemtl_2 1
+    100008: cockpit2_usemtl_3
+    100010: cockpit2_usemtl_3 1
+    100012: cushion_usemtl_1
+    100014: cushion_usemtl_1 1
+    100016: dash_usemtl_1
+    100018: dash_usemtl_1 1
+    100020: dash_usemtl_2
+    100022: dash_usemtl_2 1
+    100024: dash_usemtl_3
+    100026: dash_usemtl_3 1
+    100028: dash_usemtl_4
+    100030: dash_usemtl_4 1
+    100032: door_usemtl_1
+    100034: door_usemtl_2
+    100036: group15
+    100038: group16
+    100040: group3
+    100042: group4
+    100044: polySurface100
+    100046: polySurface101
+    100048: polySurface102
+    100050: polySurface103
+    100052: polySurface2
+    100054: polySurface24
+    100056: polySurface26
+    100058: polySurface27
+    100060: polySurface28
+    100062: polySurface29
+    100064: polySurface29 1
+    100066: polySurface3
+    100068: polySurface30
+    100070: polySurface30 1
+    100072: polySurface31
+    100074: polySurface31 1
+    100076: polySurface32
+    100078: polySurface32 1
+    100080: polySurface33
+    100082: polySurface33 1
+    100084: polySurface34
+    100086: polySurface34 1
+    100088: polySurface35
+    100090: polySurface35 1
+    100092: polySurface36
+    100094: polySurface36 1
+    100096: polySurface37
+    100098: polySurface37 1
+    100100: polySurface38
+    100102: polySurface38 1
+    100104: polySurface39
+    100106: polySurface39 1
+    100108: polySurface40
+    100110: polySurface40 1
+    100112: polySurface41
+    100114: polySurface41 1
+    100116: polySurface42
+    100118: polySurface42 1
+    100120: polySurface43
+    100122: polySurface43 1
+    100124: polySurface44
+    100126: polySurface44 1
+    100128: polySurface45
+    100130: polySurface45 1
+    100132: polySurface46
+    100134: polySurface46 1
+    100136: polySurface47
+    100138: polySurface47 1
+    100140: polySurface48
+    100142: polySurface48 1
+    100144: polySurface49
+    100146: polySurface49 1
+    100148: polySurface50
+    100150: polySurface50 1
+    100152: polySurface51
+    100154: polySurface51 1
+    100156: polySurface52
+    100158: polySurface52 1
+    100160: polySurface53
+    100162: polySurface53 1
+    100164: polySurface54
+    100166: polySurface54 1
+    100168: polySurface55
+    100170: polySurface55 1
+    100172: polySurface56
+    100174: polySurface56 1
+    100176: polySurface57
+    100178: polySurface57 1
+    100180: polySurface58
+    100182: polySurface58 1
+    100184: polySurface59
+    100186: polySurface59 1
+    100188: polySurface60
+    100190: polySurface60 1
+    100192: polySurface61
+    100194: polySurface61 1
+    100196: polySurface62
+    100198: polySurface62 1
+    100200: polySurface63
+    100202: polySurface63 1
+    100204: polySurface64
+    100206: polySurface64 1
+    100208: polySurface65
+    100210: polySurface65 1
+    100212: polySurface66
+    100214: polySurface66 1
+    100216: polySurface67
+    100218: polySurface67 1
+    100220: polySurface68
+    100222: polySurface68 1
+    100224: polySurface69
+    100226: polySurface69 1
+    100228: polySurface72
+    100230: polySurface74
+    100232: polySurface76
+    100234: polySurface77
+    100236: polySurface78
+    100238: polySurface79
+    100240: polySurface80
+    100242: polySurface82
+    100244: polySurface84
+    100246: polySurface88
+    100248: polySurface90
+    100250: polySurface92
+    100252: polySurface93
+    100254: polySurface94
+    100256: polySurface95
+    100258: polySurface96
+    100260: polySurface97
+    100262: polySurface98
+    100264: polySurface99
+    100266: propulsion_usemtl_1
+    100268: //RootNode
+    100270: transform7
+    100272: windshield_usemtl_1
+    100274: windshield_usemtl_2
+    400000: cockpit2_usemtl_1
+    400002: cockpit2_usemtl_1 1
+    400004: cockpit2_usemtl_2
+    400006: cockpit2_usemtl_2 1
+    400008: cockpit2_usemtl_3
+    400010: cockpit2_usemtl_3 1
+    400012: cushion_usemtl_1
+    400014: cushion_usemtl_1 1
+    400016: dash_usemtl_1
+    400018: dash_usemtl_1 1
+    400020: dash_usemtl_2
+    400022: dash_usemtl_2 1
+    400024: dash_usemtl_3
+    400026: dash_usemtl_3 1
+    400028: dash_usemtl_4
+    400030: dash_usemtl_4 1
+    400032: door_usemtl_1
+    400034: door_usemtl_2
+    400036: group15
+    400038: group16
+    400040: group3
+    400042: group4
+    400044: polySurface100
+    400046: polySurface101
+    400048: polySurface102
+    400050: polySurface103
+    400052: polySurface2
+    400054: polySurface24
+    400056: polySurface26
+    400058: polySurface27
+    400060: polySurface28
+    400062: polySurface29
+    400064: polySurface29 1
+    400066: polySurface3
+    400068: polySurface30
+    400070: polySurface30 1
+    400072: polySurface31
+    400074: polySurface31 1
+    400076: polySurface32
+    400078: polySurface32 1
+    400080: polySurface33
+    400082: polySurface33 1
+    400084: polySurface34
+    400086: polySurface34 1
+    400088: polySurface35
+    400090: polySurface35 1
+    400092: polySurface36
+    400094: polySurface36 1
+    400096: polySurface37
+    400098: polySurface37 1
+    400100: polySurface38
+    400102: polySurface38 1
+    400104: polySurface39
+    400106: polySurface39 1
+    400108: polySurface40
+    400110: polySurface40 1
+    400112: polySurface41
+    400114: polySurface41 1
+    400116: polySurface42
+    400118: polySurface42 1
+    400120: polySurface43
+    400122: polySurface43 1
+    400124: polySurface44
+    400126: polySurface44 1
+    400128: polySurface45
+    400130: polySurface45 1
+    400132: polySurface46
+    400134: polySurface46 1
+    400136: polySurface47
+    400138: polySurface47 1
+    400140: polySurface48
+    400142: polySurface48 1
+    400144: polySurface49
+    400146: polySurface49 1
+    400148: polySurface50
+    400150: polySurface50 1
+    400152: polySurface51
+    400154: polySurface51 1
+    400156: polySurface52
+    400158: polySurface52 1
+    400160: polySurface53
+    400162: polySurface53 1
+    400164: polySurface54
+    400166: polySurface54 1
+    400168: polySurface55
+    400170: polySurface55 1
+    400172: polySurface56
+    400174: polySurface56 1
+    400176: polySurface57
+    400178: polySurface57 1
+    400180: polySurface58
+    400182: polySurface58 1
+    400184: polySurface59
+    400186: polySurface59 1
+    400188: polySurface60
+    400190: polySurface60 1
+    400192: polySurface61
+    400194: polySurface61 1
+    400196: polySurface62
+    400198: polySurface62 1
+    400200: polySurface63
+    400202: polySurface63 1
+    400204: polySurface64
+    400206: polySurface64 1
+    400208: polySurface65
+    400210: polySurface65 1
+    400212: polySurface66
+    400214: polySurface66 1
+    400216: polySurface67
+    400218: polySurface67 1
+    400220: polySurface68
+    400222: polySurface68 1
+    400224: polySurface69
+    400226: polySurface69 1
+    400228: polySurface72
+    400230: polySurface74
+    400232: polySurface76
+    400234: polySurface77
+    400236: polySurface78
+    400238: polySurface79
+    400240: polySurface80
+    400242: polySurface82
+    400244: polySurface84
+    400246: polySurface88
+    400248: polySurface90
+    400250: polySurface92
+    400252: polySurface93
+    400254: polySurface94
+    400256: polySurface95
+    400258: polySurface96
+    400260: polySurface97
+    400262: polySurface98
+    400264: polySurface99
+    400266: propulsion_usemtl_1
+    400268: //RootNode
+    400270: transform7
+    400272: windshield_usemtl_1
+    400274: windshield_usemtl_2
+    2300000: cockpit2_usemtl_1
+    2300002: cockpit2_usemtl_1 1
+    2300004: cockpit2_usemtl_2
+    2300006: cockpit2_usemtl_2 1
+    2300008: cockpit2_usemtl_3
+    2300010: cockpit2_usemtl_3 1
+    2300012: cushion_usemtl_1
+    2300014: cushion_usemtl_1 1
+    2300016: dash_usemtl_1
+    2300018: dash_usemtl_1 1
+    2300020: dash_usemtl_2
+    2300022: dash_usemtl_2 1
+    2300024: dash_usemtl_3
+    2300026: dash_usemtl_3 1
+    2300028: dash_usemtl_4
+    2300030: dash_usemtl_4 1
+    2300032: door_usemtl_1
+    2300034: door_usemtl_2
+    2300036: polySurface100
+    2300038: polySurface101
+    2300040: polySurface102
+    2300042: polySurface103
+    2300044: polySurface2
+    2300046: polySurface24
+    2300048: polySurface26
+    2300050: polySurface27
+    2300052: polySurface28
+    2300054: polySurface29
+    2300056: polySurface29 1
+    2300058: polySurface3
+    2300060: polySurface30
+    2300062: polySurface30 1
+    2300064: polySurface31
+    2300066: polySurface31 1
+    2300068: polySurface32
+    2300070: polySurface32 1
+    2300072: polySurface33
+    2300074: polySurface33 1
+    2300076: polySurface34
+    2300078: polySurface34 1
+    2300080: polySurface35
+    2300082: polySurface35 1
+    2300084: polySurface36
+    2300086: polySurface36 1
+    2300088: polySurface37
+    2300090: polySurface37 1
+    2300092: polySurface38
+    2300094: polySurface38 1
+    2300096: polySurface39
+    2300098: polySurface39 1
+    2300100: polySurface40
+    2300102: polySurface40 1
+    2300104: polySurface41
+    2300106: polySurface41 1
+    2300108: polySurface42
+    2300110: polySurface42 1
+    2300112: polySurface43
+    2300114: polySurface43 1
+    2300116: polySurface44
+    2300118: polySurface44 1
+    2300120: polySurface45
+    2300122: polySurface45 1
+    2300124: polySurface46
+    2300126: polySurface46 1
+    2300128: polySurface47
+    2300130: polySurface47 1
+    2300132: polySurface48
+    2300134: polySurface48 1
+    2300136: polySurface49
+    2300138: polySurface49 1
+    2300140: polySurface50
+    2300142: polySurface50 1
+    2300144: polySurface51
+    2300146: polySurface51 1
+    2300148: polySurface52
+    2300150: polySurface52 1
+    2300152: polySurface53
+    2300154: polySurface53 1
+    2300156: polySurface54
+    2300158: polySurface54 1
+    2300160: polySurface55
+    2300162: polySurface55 1
+    2300164: polySurface56
+    2300166: polySurface56 1
+    2300168: polySurface57
+    2300170: polySurface57 1
+    2300172: polySurface58
+    2300174: polySurface58 1
+    2300176: polySurface59
+    2300178: polySurface59 1
+    2300180: polySurface60
+    2300182: polySurface60 1
+    2300184: polySurface61
+    2300186: polySurface61 1
+    2300188: polySurface62
+    2300190: polySurface62 1
+    2300192: polySurface63
+    2300194: polySurface63 1
+    2300196: polySurface64
+    2300198: polySurface64 1
+    2300200: polySurface65
+    2300202: polySurface65 1
+    2300204: polySurface66
+    2300206: polySurface66 1
+    2300208: polySurface67
+    2300210: polySurface67 1
+    2300212: polySurface68
+    2300214: polySurface68 1
+    2300216: polySurface69
+    2300218: polySurface69 1
+    2300220: polySurface72
+    2300222: polySurface74
+    2300224: polySurface76
+    2300226: polySurface77
+    2300228: polySurface78
+    2300230: polySurface79
+    2300232: polySurface80
+    2300234: polySurface82
+    2300236: polySurface84
+    2300238: polySurface88
+    2300240: polySurface90
+    2300242: polySurface92
+    2300244: polySurface93
+    2300246: polySurface94
+    2300248: polySurface95
+    2300250: polySurface96
+    2300252: polySurface97
+    2300254: polySurface98
+    2300256: polySurface99
+    2300258: transform7
+    2300260: windshield_usemtl_1
+    2300262: windshield_usemtl_2
+    3300000: cockpit2_usemtl_1
+    3300002: cockpit2_usemtl_1 1
+    3300004: cockpit2_usemtl_2
+    3300006: cockpit2_usemtl_2 1
+    3300008: cockpit2_usemtl_3
+    3300010: cockpit2_usemtl_3 1
+    3300012: cushion_usemtl_1
+    3300014: cushion_usemtl_1 1
+    3300016: dash_usemtl_1
+    3300018: dash_usemtl_1 1
+    3300020: dash_usemtl_2
+    3300022: dash_usemtl_2 1
+    3300024: dash_usemtl_3
+    3300026: dash_usemtl_3 1
+    3300028: dash_usemtl_4
+    3300030: dash_usemtl_4 1
+    3300032: door_usemtl_1
+    3300034: door_usemtl_2
+    3300036: polySurface100
+    3300038: polySurface101
+    3300040: polySurface102
+    3300042: polySurface103
+    3300044: polySurface2
+    3300046: polySurface24
+    3300048: polySurface26
+    3300050: polySurface27
+    3300052: polySurface28
+    3300054: polySurface29
+    3300056: polySurface29 1
+    3300058: polySurface3
+    3300060: polySurface30
+    3300062: polySurface30 1
+    3300064: polySurface31
+    3300066: polySurface31 1
+    3300068: polySurface32
+    3300070: polySurface32 1
+    3300072: polySurface33
+    3300074: polySurface33 1
+    3300076: polySurface34
+    3300078: polySurface34 1
+    3300080: polySurface35
+    3300082: polySurface35 1
+    3300084: polySurface36
+    3300086: polySurface36 1
+    3300088: polySurface37
+    3300090: polySurface37 1
+    3300092: polySurface38
+    3300094: polySurface38 1
+    3300096: polySurface39
+    3300098: polySurface39 1
+    3300100: polySurface40
+    3300102: polySurface40 1
+    3300104: polySurface41
+    3300106: polySurface41 1
+    3300108: polySurface42
+    3300110: polySurface42 1
+    3300112: polySurface43
+    3300114: polySurface43 1
+    3300116: polySurface44
+    3300118: polySurface44 1
+    3300120: polySurface45
+    3300122: polySurface45 1
+    3300124: polySurface46
+    3300126: polySurface46 1
+    3300128: polySurface47
+    3300130: polySurface47 1
+    3300132: polySurface48
+    3300134: polySurface48 1
+    3300136: polySurface49
+    3300138: polySurface49 1
+    3300140: polySurface50
+    3300142: polySurface50 1
+    3300144: polySurface51
+    3300146: polySurface51 1
+    3300148: polySurface52
+    3300150: polySurface52 1
+    3300152: polySurface53
+    3300154: polySurface53 1
+    3300156: polySurface54
+    3300158: polySurface54 1
+    3300160: polySurface55
+    3300162: polySurface55 1
+    3300164: polySurface56
+    3300166: polySurface56 1
+    3300168: polySurface57
+    3300170: polySurface57 1
+    3300172: polySurface58
+    3300174: polySurface58 1
+    3300176: polySurface59
+    3300178: polySurface59 1
+    3300180: polySurface60
+    3300182: polySurface60 1
+    3300184: polySurface61
+    3300186: polySurface61 1
+    3300188: polySurface62
+    3300190: polySurface62 1
+    3300192: polySurface63
+    3300194: polySurface63 1
+    3300196: polySurface64
+    3300198: polySurface64 1
+    3300200: polySurface65
+    3300202: polySurface65 1
+    3300204: polySurface66
+    3300206: polySurface66 1
+    3300208: polySurface67
+    3300210: polySurface67 1
+    3300212: polySurface68
+    3300214: polySurface68 1
+    3300216: polySurface69
+    3300218: polySurface69 1
+    3300220: polySurface72
+    3300222: polySurface74
+    3300224: polySurface76
+    3300226: polySurface77
+    3300228: polySurface78
+    3300230: polySurface79
+    3300232: polySurface80
+    3300234: polySurface82
+    3300236: polySurface84
+    3300238: polySurface88
+    3300240: polySurface90
+    3300242: polySurface92
+    3300244: polySurface93
+    3300246: polySurface94
+    3300248: polySurface95
+    3300250: polySurface96
+    3300252: polySurface97
+    3300254: polySurface98
+    3300256: polySurface99
+    3300258: transform7
+    3300260: windshield_usemtl_1
+    3300262: windshield_usemtl_2
+    4300000: transform7
+    4300002: polySurface39
+    4300004: polySurface40
+    4300006: polySurface52
+    4300008: polySurface53
+    4300010: cockpit2_usemtl_1
+    4300012: cockpit2_usemtl_2
+    4300014: polySurface29
+    4300016: polySurface30
+    4300018: polySurface31
+    4300020: polySurface32
+    4300022: polySurface33
+    4300024: polySurface34
+    4300026: polySurface35
+    4300028: polySurface36
+    4300030: polySurface37
+    4300032: polySurface38
+    4300034: polySurface41
+    4300036: polySurface42
+    4300038: polySurface43
+    4300040: polySurface44
+    4300042: polySurface45
+    4300044: polySurface46
+    4300046: polySurface47
+    4300048: polySurface48
+    4300050: polySurface49
+    4300052: polySurface50
+    4300054: polySurface51
+    4300056: polySurface54
+    4300058: polySurface55
+    4300060: polySurface56
+    4300062: polySurface57
+    4300064: polySurface58
+    4300066: polySurface59
+    4300068: polySurface60
+    4300070: polySurface61
+    4300072: polySurface62
+    4300074: polySurface63
+    4300076: polySurface64
+    4300078: polySurface65
+    4300080: polySurface66
+    4300082: polySurface67
+    4300084: polySurface68
+    4300086: polySurface69
+    4300088: cushion_usemtl_1
+    4300090: dash_usemtl_2
+    4300092: dash_usemtl_3
+    4300094: dash_usemtl_4
+    4300096: dash_usemtl_1
+    4300098: cockpit2_usemtl_3
+    4300100: polySurface39
+    4300102: polySurface40
+    4300104: polySurface52
+    4300106: polySurface53
+    4300108: cockpit2_usemtl_1
+    4300110: cockpit2_usemtl_2
+    4300112: polySurface29
+    4300114: polySurface30
+    4300116: polySurface31
+    4300118: polySurface32
+    4300120: polySurface33
+    4300122: polySurface34
+    4300124: polySurface35
+    4300126: polySurface36
+    4300128: polySurface37
+    4300130: polySurface38
+    4300132: polySurface41
+    4300134: polySurface42
+    4300136: polySurface43
+    4300138: polySurface44
+    4300140: polySurface45
+    4300142: polySurface46
+    4300144: polySurface47
+    4300146: polySurface48
+    4300148: polySurface49
+    4300150: polySurface50
+    4300152: polySurface51
+    4300154: polySurface54
+    4300156: polySurface55
+    4300158: polySurface56
+    4300160: polySurface57
+    4300162: polySurface58
+    4300164: polySurface59
+    4300166: polySurface60
+    4300168: polySurface61
+    4300170: polySurface62
+    4300172: polySurface63
+    4300174: polySurface64
+    4300176: polySurface65
+    4300178: polySurface66
+    4300180: polySurface67
+    4300182: polySurface68
+    4300184: polySurface69
+    4300186: cushion_usemtl_1
+    4300188: dash_usemtl_2
+    4300190: dash_usemtl_3
+    4300192: dash_usemtl_4
+    4300194: dash_usemtl_1
+    4300196: cockpit2_usemtl_3
+    4300198: polySurface24
+    4300200: polySurface26
+    4300202: polySurface27
+    4300204: polySurface28
+    4300206: door_usemtl_1
+    4300208: door_usemtl_2
+    4300210: windshield_usemtl_1
+    4300212: windshield_usemtl_2
+    4300214: polySurface2
+    4300216: polySurface95
+    4300218: polySurface79
+    4300220: polySurface3
+    4300222: polySurface77
+    4300224: polySurface80
+    4300226: polySurface92
+    4300228: polySurface103
+    4300230: polySurface93
+    4300232: polySurface74
+    4300234: polySurface82
+    4300236: polySurface90
+    4300238: polySurface94
+    4300240: polySurface76
+    4300242: polySurface96
+    4300244: polySurface97
+    4300246: polySurface98
+    4300248: polySurface99
+    4300250: polySurface78
+    4300252: polySurface72
+    4300254: polySurface100
+    4300256: polySurface84
+    4300258: polySurface101
+    4300260: polySurface88
+    4300262: polySurface102
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
