@@ -42,11 +42,11 @@ public class fighterMotor : MonoBehaviour {
 
 	void FixedUpdate(){
 		float speed = Input.GetAxis ("Speed") * acceleration * -1;
-		if (speed >= 3) {
-			speed=3f;		
+		if (speed >= 1) {
+			speed=1f;		
 		}
-		if (speed <= -1) {
-			speed=-1f;
+		if (speed <= -0.5) {
+			speed=-0.5f;
 		}
 
 		Debug.Log ("horizontal"+Input.GetAxis ("Horizontal") );

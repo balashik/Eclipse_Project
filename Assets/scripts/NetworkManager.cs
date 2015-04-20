@@ -86,7 +86,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 
 		//instantiating a fighter into the game
-		Fighter = PhotonNetwork.Instantiate ("Fighter", myFighterSpot.transform.position, myFighterSpot.transform.rotation, 0);
+		Fighter = PhotonNetwork.Instantiate ("NewFighter", myFighterSpot.transform.position, myFighterSpot.transform.rotation, 0);
 		amIAlive = true;
 		
 
