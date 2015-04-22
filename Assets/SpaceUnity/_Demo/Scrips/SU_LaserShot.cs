@@ -87,7 +87,9 @@ public class SU_LaserShot : MonoBehaviour {
 
 					if (h!=null){
 						//h.addDamage(damage);
+						Debug.Log (_hit.collider.name);
 						h.GetComponent<PhotonView>().RPC("addDamage",PhotonTargets.All,damage);
+
 						// Instantiate the explosion effect at the point of impact
 						//Instantiate(explosionEffect, _hit.transform.position, _rotation);
 						// Destroy the game object that we just hit

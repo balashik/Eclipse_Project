@@ -126,7 +126,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 			groupId = num / 2;
 			return;
 		}
-		Debug.Log (groupId);
+
 	}
 
 
