@@ -20,7 +20,7 @@ public class Health : Photon.MonoBehaviour {
 		return health;
 	}
 	
-	void destroyFighter(){
+	public void destroyFighter(){
 		Debug.Log ("destroy");
 		Instantiate(explosionEffect,transform.position,transform.rotation);
 		if(gameObject.GetComponent<PhotonView>().instantiationId==0){

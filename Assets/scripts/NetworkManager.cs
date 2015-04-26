@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class NetworkManager :Photon.MonoBehaviour {
 	
 
-
+	public GameObject Space;
 	public OVRCameraRig ovrCam;
 	public Camera cam;//test cam
 	public bool amIAlive;
@@ -129,9 +129,47 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 	}
 
+	/*public void OnFailedToConnectToPhoton()
+	{
+		Debug.Log("OnFailedToConnectToPhoton");
+		
+		if (CheckForInternetConnection () == false) {
+			Debug.Log("No internet connection detected - going back to main menu");
+			PhotonNetwork.Disconnect();
+			Application.LoadLevel ("spaceship2");
+		}
+		
+		Debug.Log("Internet connetion detected");
+		//OnJoinedRoom (); this is not a function thats a callback
 
+		PhotonNetwork.JoinOrCreateRoom("mmo",roomOptions,TypedLobby.Default);
+	}*/
 
+	
+	/*void OnPhotonJoinRoomFailed()
+	{
+		Debug.Log("OnPhotonJoinRoomFailed");
+		Debug.Log("Creating room");
+		PhotonNetwork.CreateRoom ("mmo");// need to change room name to something with value
+	}*/
 
-
+	/*
+	public static bool CheckForInternetConnection()
+	{
+		try
+		{
+			using (var client = new WebClient())
+				using (var stream = client.OpenRead("http://www.google.com"))
+			{
+				Debug.Log("Internet connection is ok");
+				return true;
+			}
+		}
+		catch
+		{
+			Debug.Log("No internet connection - I'm out");
+			return false;
+		}
+	}*/
 
 }
