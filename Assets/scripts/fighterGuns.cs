@@ -13,7 +13,6 @@ public class fighterGuns : Photon.MonoBehaviour {
 	public int shotBuffer;
 	public Vector3[] gunnerMountPoints; //where we are shooting from
 	public Transform gunnerShotPrefab;
-	float mouseY;
 	// Use this for initialization
 	void Start () {
 	
@@ -21,32 +20,30 @@ public class fighterGuns : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ((Input.GetAxis ("leftGun") == 1)){
-
-			gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 1);
+		if (PlayerPrefs.GetString ("controllerMode") == "gamepad") {
+			if ((Input.GetAxis ("leftGunGamepad") == 1)) {
+				gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 1);
+			}
+			if ((Input.GetAxis ("rightGunGamepad") == 1)) {
+				gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 0);
+			}
+			if ((Input.GetAxis ("leftGunGamepad") == 1) && (Input.GetAxis ("rightGunGamepad") == 1)) {
+				gameObject.GetComponent<PhotonView> ().RPC ("shootBoth", PhotonTargets.All, null);
+			}
+		} else {
+			if (PlayerPrefs.GetString ("controllerMode") == "keyboard") {
+				if (Input.GetKey (KeyCode.LeftControl)) {
+					gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 1);
+				}
+				if (Input.GetKey (KeyCode.RightControl)) {
+					gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 0);
+				}
+				if((Input.GetKey (KeyCode.LeftControl))&&(Input.GetKey(KeyCode.RightControl))){
+					gameObject.GetComponent<PhotonView> ().RPC ("shootBoth", PhotonTargets.All, null);
+				}
+			}
+				
 		}
-		if ((Input.GetAxis ("rightGun") == 1)){
-			gameObject.GetComponent<PhotonView> ().RPC ("shootGun", PhotonTargets.All, 0);
-		}
-		if ((Input.GetAxis ("leftGun") == 1) && (Input.GetAxis ("rightGun") == 1)) {
-			gameObject.GetComponent<PhotonView> ().RPC ("shootBoth", PhotonTargets.All,null);
-		}
-
-
-		if (mouseY < -yMouseTop) {
-			mouseY = -yMouseTop;
-			
-		}
-		if (mouseY > yMouseBottom) {
-			mouseY = yMouseBottom;
-			
-		}
-		//gunAimRigidBody.transform.position = new Vector3 (gunAimRigidBody.transform.position.x + Input.GetAxis ("Mouse X"), mouseY, gunAimRigidBody.transform.position.z);
-		//gunAimRigidBody.transform.position = new Vector3(transform.position.x+Input.GetAxis("Mouse X"),transform.position.y,transform.position.z);
-		//gunAimRigidBody.MovePosition(transform.position+Input.GetAxis ("Mouse Y"));
-		//Debug.Log ("x"+Input.GetAxis("Mouse X"));
-
-	
 	}
 
 	[RPC]

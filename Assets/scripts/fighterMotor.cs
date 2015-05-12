@@ -10,6 +10,8 @@ public class fighterMotor : MonoBehaviour {
 	public float yawRate;	//spaceship yaw multiplier (barrel role)
 	public float pitchRate; //spaceship pitch multiplier (up/down)
 	Rigidbody myRigidBody;
+
+	float speed;
 	// Use this for initialization
 	void Start () {
 
@@ -41,25 +43,55 @@ public class fighterMotor : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+		if (PlayerPrefs.GetString ("controllerMode") == "gamepad") {
+			gamepadControll();
+		}
+		if (PlayerPrefs.GetString ("controllerMode") == "keyboard") {
+			keyboardControll();	
+		}
 
+	}
+
+	void gamepadControll(){
 		float speed = Input.GetAxis ("Speed") * acceleration * -1;
 		if (speed >= 1) {
-			speed=1f;		
+			speed = 1f;		
 		}
 		if (speed <= -0.5) {
-			speed=-0.5f;
+			speed = -0.5f;
 		}
-
-		Debug.Log ("horizontal"+Input.GetAxis ("Horizontal") );
-		Debug.Log ("vertical"+Input.GetAxis ("Vertical") );
-
 		myRigidBody.AddRelativeTorque (new Vector3 (0, 0, -Input.GetAxis ("Horizontal") * roleRate * myRigidBody.mass));
 		myRigidBody.AddRelativeTorque (new Vector3 (0, Input.GetAxis ("Horizontal") * yawRate * myRigidBody.mass, 0));
 		myRigidBody.AddRelativeTorque (new Vector3 (Input.GetAxis ("Vertical") * pitchRate * myRigidBody.mass, 0, 0));
-		
-		
 		myRigidBody.velocity += transform.forward * speed;
 	}
+
+
+	void keyboardControll(){
+		Debug.Log (speed);
+		if (Input.GetKeyDown ("space")) {
+			speed +=(Time.deltaTime* acceleration);
+			if (speed >= 1) {
+				speed = 1f;		
+			}
+		}
+		if (Input.GetKeyDown ("x")) {
+			speed -=(Time.deltaTime* acceleration);
+			if (speed >= 1) {
+				speed = 1f;		
+			}
+		}
+		if (speed <= -0.5) {
+			speed = -0.5f;
+		}
+
+		 
+		myRigidBody.AddRelativeTorque (new Vector3 (0, 0, -Input.GetAxis ("HorizontalKeyboard") * roleRate * myRigidBody.mass));
+		myRigidBody.AddRelativeTorque (new Vector3 (0, Input.GetAxis ("HorizontalKeyboard") * yawRate * myRigidBody.mass, 0));
+		myRigidBody.AddRelativeTorque (new Vector3 (Input.GetAxis ("VerticalKeyboard") * pitchRate * myRigidBody.mass, 0, 0));
+		myRigidBody.velocity += transform.forward * speed;
+	}
+
 
 
 
