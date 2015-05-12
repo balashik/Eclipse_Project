@@ -41,6 +41,7 @@ public class fighterMotor : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+
 		float speed = Input.GetAxis ("Speed") * acceleration * -1;
 		if (speed >= 1) {
 			speed=1f;		
@@ -59,4 +60,10 @@ public class fighterMotor : MonoBehaviour {
 		
 		myRigidBody.velocity += transform.forward * speed;
 	}
+
+
+
+
+
+
 }

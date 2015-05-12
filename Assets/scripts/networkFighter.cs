@@ -7,13 +7,14 @@ public class networkFighter : Photon.MonoBehaviour {
 	Vector3 realPosition = Vector3.zero;
 	Quaternion realRotation = Quaternion.identity;
 
-	public OVRCameraRig myCam;
+	public OVRCameraRig myOVRCam;
+	public Camera myScreenCam;
 	public bool amIPilot;
 	void Start(){
 		if (photonView.isMine) {
 			gameObject.GetComponent<fighterGuns>().enabled = true;
 			gameObject.GetComponent<fighterMotor>().enabled = true;
-			myCam.gameObject.SetActive(true);
+			setupCamera();
 
 
 		} else {
@@ -29,6 +30,17 @@ public class networkFighter : Photon.MonoBehaviour {
 		}
 	}
 
+	void setupCamera (){
+
+		if (PlayerPrefs.GetString ("cameraMode") == "screen") {
+			myScreenCam.gameObject.SetActive(true);
+		} else {
+			if (PlayerPrefs.GetString ("cameraMode") == "OVR") {	
+				myOVRCam.gameObject.SetActive(true);
+			}
+		}
+
+	}
 
 	void OnPhotonSerializeView (PhotonStream stream, PhotonMessageInfo info){
 
@@ -42,4 +54,5 @@ public class networkFighter : Photon.MonoBehaviour {
 		}
 
 	}
+	
 }

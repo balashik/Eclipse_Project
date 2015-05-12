@@ -9,7 +9,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 	public GameObject Space;
 	public OVRCameraRig ovrCam;
-	public Camera cam;//test cam
+	public Camera screenCam;
 	public bool amIAlive;
 	public float respawnTime;
 	public GameObject Fighters;
@@ -24,6 +24,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 
 	void Start(){
+		modeSelect ();
 		amIAlive = true;
 		Debug.Log ("Start");
 		whoAmI = 0; //Pilot
@@ -98,12 +99,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 			Debug.LogWarning ("unable spawn a player to a player spot, spots = null");
 			return;
 		}
-		spawnSpot mySpot = spots [whoAmI];
-		Fighter.GetComponent<networkFighter> ().myCam = ovrCam;
-		ovrCam.transform.position = mySpot.transform.position;
-		ovrCam.transform.rotation = mySpot.transform.rotation;
-		ovrCam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
-
+		setupCamera (spots [whoAmI]);
 	}
 
 	void getSpaceshipId(){
@@ -171,5 +167,33 @@ public class NetworkManager :Photon.MonoBehaviour {
 			return false;
 		}
 	}*/
+	void modeSelect(){
 
+		if (PlayerPrefs.GetString ("cameraMode") == "screen") {
+			ovrCam.gameObject.SetActive(false);
+			screenCam.gameObject.SetActive(true);
+		} else {
+			if (PlayerPrefs.GetString ("cameraMode") == "OVR") {
+				Debug.Log ("OVR");		
+			} 		
+		}
+
+	}
+
+	void setupCamera(spawnSpot mySpot){
+		if (PlayerPrefs.GetString ("cameraMode") == "screen") {
+			Fighter.GetComponent<networkFighter> ().myScreenCam = screenCam;
+			screenCam.transform.position = mySpot.transform.position;
+			screenCam.transform.rotation = mySpot.transform.rotation;
+			screenCam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
+		} else {
+			if (PlayerPrefs.GetString ("cameraMode") == "OVR") {
+				Fighter.GetComponent<networkFighter> ().myOVRCam = ovrCam;
+				ovrCam.transform.position = mySpot.transform.position;
+				ovrCam.transform.rotation = mySpot.transform.rotation;
+				ovrCam.GetComponent<CameraFollow> ().SetTarget (mySpot.transform);
+			} 		
+
+		}
+	}
 }

@@ -20,6 +20,14 @@ public class MenuManager : MonoBehaviour {
 		Application.LoadLevel ("multiPlayer");
 		
 	}
+
+	public void showMenu(Menu menu){
+		
+		currentMenu.setIsOpen (false);
+		currentMenu = menu;
+		currentMenu.setIsOpen (true);
+	
+	}
 	/*public void pickSinglePlayer(Menu menu){
 
 		isMulti = false;
@@ -73,6 +81,8 @@ public class MenuManager : MonoBehaviour {
 		}
 
 	}*/
+
+
 
 	public void exitMenu(){
 		Application.Quit ();

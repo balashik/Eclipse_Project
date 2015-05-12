@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LoginManager.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRDisplay.cs" />
@@ -146,6 +147,7 @@
      <Compile Include="Assets\scripts\NetworkManager.cs" />
      <Compile Include="Assets\scripts\NewBehaviourScript.cs" />
      <Compile Include="Assets\scripts\UI_Script.cs" />
+     <Compile Include="Assets\scripts\UserSettings.cs" />
      <Compile Include="Assets\scripts\displayCams.cs" />
      <Compile Include="Assets\scripts\fighterGuns.cs" />
      <Compile Include="Assets\scripts\fighterMotor.cs" />
