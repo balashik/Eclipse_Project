@@ -55,6 +55,8 @@ public class UserSettings : MonoBehaviour {
 		PlayerPrefs.DeleteKey("cameraMode");
 		PlayerPrefs.DeleteKey("controllerMode");
 		PlayerPrefs.SetString ("cameraMode", CameraDisplay.OVR.ToString());
+		ovrToggle.isOn = true;
+		gamepadToggle.isOn = true;
 	}
 
 
