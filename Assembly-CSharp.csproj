@@ -46,7 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\LoginManager.cs" />
+     <Compile Include="Assets\Health_Bar\Scripts\ApplyDamage.cs" />
+     <Compile Include="Assets\Health_Bar\Scripts\Healthbar.cs" />
+     <Compile Include="Assets\Health_Bar\Scripts\SpriteDatabase.cs" />
+     <Compile Include="Assets\Health_Bar\Scripts\Sprites.cs" />
+     <Compile Include="Assets\Health_Bar\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRDisplay.cs" />
@@ -136,16 +140,20 @@
      <Compile Include="Assets\SpaceUnity\_Demo\Scrips\SU_Spaceship.cs" />
      <Compile Include="Assets\SpaceUnity\_Demo\Scrips\SU_Thruster.cs" />
      <Compile Include="Assets\scripts\CameraFollow.cs" />
+     <Compile Include="Assets\scripts\DisplaySpeed.cs" />
      <Compile Include="Assets\scripts\FighterSettings.cs" />
      <Compile Include="Assets\scripts\FighterSpawningSpot.cs" />
      <Compile Include="Assets\scripts\FightersArray.cs" />
+     <Compile Include="Assets\scripts\HTTPClient.cs" />
      <Compile Include="Assets\scripts\Health.cs" />
      <Compile Include="Assets\scripts\LoadingScreen.cs" />
+     <Compile Include="Assets\scripts\LoginManager.cs" />
      <Compile Include="Assets\scripts\Menu.cs" />
      <Compile Include="Assets\scripts\MenuManager.cs" />
      <Compile Include="Assets\scripts\MyPlayerSettings.cs" />
      <Compile Include="Assets\scripts\NetworkManager.cs" />
      <Compile Include="Assets\scripts\NewBehaviourScript.cs" />
+     <Compile Include="Assets\scripts\Score.cs" />
      <Compile Include="Assets\scripts\UI_Script.cs" />
      <Compile Include="Assets\scripts\UserSettings.cs" />
      <Compile Include="Assets\scripts\displayCams.cs" />
@@ -158,14 +166,15 @@
      <Compile Include="Assets\scripts\singleplayerLaserShot.cs" />
      <Compile Include="Assets\scripts\spaceShipController.cs" />
      <Compile Include="Assets\scripts\spawnSpot.cs" />
+     <Compile Include="Assets\scripts\starCollision.cs" />
      <Compile Include="Assets\scripts\thrusters.cs" />
-     <Compile Include="Assets\starCollision.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\app-id.txt" />
      <None Include="Assets\SpaceUnity\Read First.txt" />
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\SpaceUnity\Shaders\PlanetRings.shader" />
      <None Include="Assets\shaders\gunAimShader.shader" />
+     <None Include="Assets\Health_Bar\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Plugins\release_history.txt" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\SpaceUnity\Shaders\PlanetSelfIllum.shader" />

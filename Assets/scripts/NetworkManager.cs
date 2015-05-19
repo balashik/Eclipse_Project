@@ -171,7 +171,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 		if (PlayerPrefs.GetString ("cameraMode") == "screen") {
 			ovrCam.gameObject.SetActive(false);
-			screenCam.gameObject.SetActive(true);
+			//screenCam.gameObject.SetActive(true);
 		} else {
 			if (PlayerPrefs.GetString ("cameraMode") == "OVR") {
 				Debug.Log ("OVR");		

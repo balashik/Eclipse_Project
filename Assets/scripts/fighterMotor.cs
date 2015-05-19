@@ -69,13 +69,13 @@ public class fighterMotor : MonoBehaviour {
 
 	void keyboardControll(){
 		Debug.Log (speed);
-		if (Input.GetKeyDown ("space")) {
+		if (Input.GetKey (KeyCode.Space)) {
 			speed +=(Time.deltaTime* acceleration);
 			if (speed >= 1) {
 				speed = 1f;		
 			}
 		}
-		if (Input.GetKeyDown ("x")) {
+		if (Input.GetKey (KeyCode.X)) {
 			speed -=(Time.deltaTime* acceleration);
 			if (speed >= 1) {
 				speed = 1f;		
@@ -90,6 +90,10 @@ public class fighterMotor : MonoBehaviour {
 		myRigidBody.AddRelativeTorque (new Vector3 (0, Input.GetAxis ("HorizontalKeyboard") * yawRate * myRigidBody.mass, 0));
 		myRigidBody.AddRelativeTorque (new Vector3 (Input.GetAxis ("VerticalKeyboard") * pitchRate * myRigidBody.mass, 0, 0));
 		myRigidBody.velocity += transform.forward * speed;
+	}
+
+	public int getSpeed(){
+		return (int)(speed * 100);
 	}
 
 

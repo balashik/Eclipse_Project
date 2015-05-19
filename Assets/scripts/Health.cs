@@ -5,9 +5,10 @@ public class Health : Photon.MonoBehaviour {
 	
 	public Transform explosionEffect;
 	public int health = 100;
-	void Awake(){
-		//health = gameObject.GetComponent<FighterSettings> ().health; 
+	GameObject MyScore;
+	void Start(){
 	
+		MyScore = GameObject.Find("ScoreManager");
 	}
 	[RPC]
 	public void addDamage(int num){
@@ -21,6 +22,7 @@ public class Health : Photon.MonoBehaviour {
 	}
 	
 	public void destroyFighter(){
+		MyScore.GetComponent<Score> ().addDeath ();
 		Debug.Log ("destroy");
 		Instantiate(explosionEffect,transform.position,transform.rotation);
 		if(gameObject.GetComponent<PhotonView>().instantiationId==0){

@@ -39,9 +39,11 @@ public class SU_LaserShot : MonoBehaviour {
 	// Private variables
 	private Vector3 _velocity;
 	private Vector3 _newPos;
-	private Vector3 _oldPos;	
+	private Vector3 _oldPos;
+	GameObject MyScore;
 	
 	void Start () {
+		MyScore = GameObject.Find("ScoreManager");
 		// Set the new position to the current position of the transform
 		_newPos = transform.position;
 		// Set the old position to the same value
@@ -89,7 +91,9 @@ public class SU_LaserShot : MonoBehaviour {
 						//h.addDamage(damage);
 						Debug.Log (_hit.collider.name);
 						h.GetComponent<PhotonView>().RPC("addDamage",PhotonTargets.All,damage);
-
+						if(h.getHealth()<=0){
+							MyScore.GetComponent<Score> ().addKill ();
+						}
 						// Instantiate the explosion effect at the point of impact
 						//Instantiate(explosionEffect, _hit.transform.position, _rotation);
 						// Destroy the game object that we just hit

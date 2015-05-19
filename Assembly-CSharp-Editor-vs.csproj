@@ -73,6 +73,7 @@
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\SpaceUnity\Shaders\PlanetRings.shader" />
      <None Include="Assets\shaders\gunAimShader.shader" />
+     <None Include="Assets\Health_Bar\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Plugins\release_history.txt" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\SpaceUnity\Shaders\PlanetSelfIllum.shader" />
@@ -84,6 +85,9 @@
      <None Include="Assets\Plugins\x86\donotdelete.txt" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
+ <Reference Include="Assembly-UnityScript">
+ <HintPath>D:/fpj/unity/alpha/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -14,8 +14,9 @@ public class fighterGuns : Photon.MonoBehaviour {
 	public Vector3[] gunnerMountPoints; //where we are shooting from
 	public Transform gunnerShotPrefab;
 	// Use this for initialization
-	void Start () {
 	
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame

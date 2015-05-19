@@ -73,6 +73,7 @@
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\SpaceUnity\Shaders\PlanetRings.shader" />
      <None Include="Assets\shaders\gunAimShader.shader" />
+     <None Include="Assets\Health_Bar\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Plugins\release_history.txt" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\SpaceUnity\Shaders\PlanetSelfIllum.shader" />
@@ -105,6 +106,8 @@
       <Project>{422F94B3-23C0-5CC8-DCC6-551114DC20CC}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{24D2D8EB-FA5F-3990-CAEA-0D5F3522EACC}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript.unityproj">
+      <Project>{1D4171F7-08FC-0844-6E84-B9E1CA746BE1}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
