@@ -14,8 +14,14 @@ public class CameraFollow : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		myTransform.position = cameraTarget.transform.position;
-		myTransform.rotation = cameraTarget.transform.rotation;
+		if (cameraTarget == null) {
+			myTransform.position = Vector3.zero;
+			myTransform.rotation = Quaternion.identity;
+		} else {
+			myTransform.position = cameraTarget.transform.position;
+			myTransform.rotation = cameraTarget.transform.rotation;
+
+		}
 	}
 
 	public void SetTarget(Transform target)
