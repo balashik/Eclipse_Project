@@ -55,7 +55,6 @@ public class SU_LaserShot : MonoBehaviour {
 	}
 	
 	void Update () {
-		Debug.Log ("here");
 		// Change new position by the velocity magnitude (in the direction of transform.forward) and since
 		// we are in the update function we need to multiply by deltatime.
 		_newPos += transform.forward * _velocity.magnitude * Time.deltaTime;
@@ -88,16 +87,18 @@ public class SU_LaserShot : MonoBehaviour {
 					}*/
 
 					if (h!=null){
-						//h.addDamage(damage);
-						Debug.Log (_hit.collider.name);
-						h.GetComponent<PhotonView>().RPC("addDamage",PhotonTargets.All,damage);
-						if(h.getHealth()<=0){
-							MyScore.GetComponent<Score> ().addKill ();
+						if (h.getHealth()>=0){
+							Debug.Log (_hit.collider.name);
+							h.GetComponent<PhotonView>().RPC("addDamage",PhotonTargets.All,damage);
+							if(h.getHealth()<=0){
+
+								MyScore.GetComponent<Score> ().addKill ();
+							}
+							// Instantiate the explosion effect at the point of impact
+							//Instantiate(explosionEffect, _hit.transform.position, _rotation);
+							// Destroy the game object that we just hit
+							//Destroy(_hit.transform.gameObject);
 						}
-						// Instantiate the explosion effect at the point of impact
-						//Instantiate(explosionEffect, _hit.transform.position, _rotation);
-						// Destroy the game object that we just hit
-						//Destroy(_hit.transform.gameObject);
 					}
 					// Destroy the laser shot game object
 					Destroy(gameObject);

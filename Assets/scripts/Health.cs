@@ -10,6 +10,8 @@ public class Health : Photon.MonoBehaviour {
 	
 		MyScore = GameObject.Find("ScoreManager");
 	}
+	void Update(){
+	}
 	[RPC]
 	public void addDamage(int num){
 		health += num;
@@ -22,13 +24,15 @@ public class Health : Photon.MonoBehaviour {
 	}
 	
 	public void destroyFighter(){
-		MyScore.GetComponent<Score> ().addDeath ();
+
 		Debug.Log ("destroy");
 		Instantiate(explosionEffect,transform.position,transform.rotation);
 		if(gameObject.GetComponent<PhotonView>().instantiationId==0){
+			MyScore.GetComponent<Score> ().addDeath ();	
 			Destroy(gameObject);
 		}else{
 			if(GetComponent<PhotonView>().isMine){
+				//MyScore.GetComponent<Score> ().addDeath ();
 				if (gameObject.tag=="Fighter"){
 					GameObject.Find("OVRCameraRig");
 					NetworkManager nm = GameObject.FindObjectOfType<NetworkManager>();

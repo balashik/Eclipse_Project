@@ -68,7 +68,6 @@ public class fighterMotor : MonoBehaviour {
 
 
 	void keyboardControll(){
-		Debug.Log (speed);
 		if (Input.GetKey (KeyCode.Space)) {
 			speed +=(Time.deltaTime* acceleration);
 			if (speed >= 1) {

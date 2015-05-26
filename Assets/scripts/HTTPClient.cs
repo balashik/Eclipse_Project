@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class HTTPClient : MonoBehaviour {
 
-	private string url = "http://52.24.91.179/";
-
+	//private string url = "http://52.24.91.179/";
+	private string url = "http://52.24.91.179/gamelogin";
 	private int success_fail = -1;
 	// 0 - cannot connect to server - server down/no internet
 	// 1 - cannot login - check username/password or register in website

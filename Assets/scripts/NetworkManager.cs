@@ -13,7 +13,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 	public bool amIAlive;
 	public float respawnTime;
 	public GameObject Fighters;
-
+	public Canvas endGameCanvas;
 	int whoAmI;
 	spawnSpot[] spots;
 	FighterSpawningSpot[] fighterSpots;
@@ -44,11 +44,16 @@ public class NetworkManager :Photon.MonoBehaviour {
 				
 			}
 		}
+		if (Input.GetKey(KeyCode.Escape)) {
+			Debug.Log ("espcaped game");
+			endGameCanvas.gameObject.SetActive(true);
+			endGameCanvas.GetComponent<EndGame>().Fighter = Fighter;
+		}
 	}
 
 	
 	void OnGUI(){
-		Debug.Log (PhotonNetwork.connectionStateDetailed.ToString ());
+		/*Debug.Log (PhotonNetwork.connectionStateDetailed.ToString ());
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
 		GUILayout.Label ("Number of players in room "+PhotonNetwork.countOfPlayers.ToString());
 		GUILayout.Label ("player ID " + PhotonNetwork.player.ID);
@@ -57,7 +62,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 		}
 		if(amIAlive){
 			GUI.Label (new Rect (Screen.width / 2, 10, 300, 300), "Respawn in:" + (int)respawnTime);
-		}
+		}*/
 	}
 
 	void OnJoinedLobby(){
@@ -171,7 +176,7 @@ public class NetworkManager :Photon.MonoBehaviour {
 
 		if (PlayerPrefs.GetString ("cameraMode") == "screen") {
 			ovrCam.gameObject.SetActive(false);
-			//screenCam.gameObject.SetActive(true);
+			Debug.Log ("cam");
 		} else {
 			if (PlayerPrefs.GetString ("cameraMode") == "OVR") {
 				Debug.Log ("OVR");		
