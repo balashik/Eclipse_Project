@@ -28,18 +28,18 @@ public class fighterMotor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetAxis ("Speed") * acceleration * -1 > 0) {
+		if (speed > 0) {
 			foreach (thrusters thruster in myThrusters) {
 				thruster.StartThruster ();
 				
 			}
 		}
-		if (Input.GetAxis ("Speed") * acceleration * -1 <= 0) {
+		if (speed<= 0) {
 			foreach (thrusters thruster in myThrusters) {
 				thruster.StopThruster ();
 			}
 		}
-	
+
 	}
 
 	void FixedUpdate(){
@@ -49,11 +49,13 @@ public class fighterMotor : MonoBehaviour {
 		if (PlayerPrefs.GetString ("controllerMode") == "keyboard") {
 			keyboardControll();	
 		}
-
+		if (PlayerPrefs.GetString ("controllerMode") == "joystick") {
+			joystickControll();	
+		}
 	}
 
 	void gamepadControll(){
-		float speed = Input.GetAxis ("Speed") * acceleration * -1;
+		speed = Input.GetAxis ("Speed") * acceleration * -1;
 		if (speed >= 1) {
 			speed = 1f;		
 		}
@@ -71,7 +73,7 @@ public class fighterMotor : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Space)) {
 			speed +=(Time.deltaTime* acceleration);
 			if (speed >= 1) {
-				speed = 1f;		
+				speed = 1f;
 			}
 		}
 		if (Input.GetKey (KeyCode.X)) {
@@ -91,6 +93,13 @@ public class fighterMotor : MonoBehaviour {
 		myRigidBody.velocity += transform.forward * speed;
 	}
 
+	void joystickControll(){
+		//speed = (Input.GetAxis ("SpeedJoyStick")*acceleration);
+		speed = Input.GetAxisRaw ("SpeedJoyStick");
+		Debug.Log (Input.GetAxisRaw("VerticalJoyStick"));
+		myRigidBody.velocity += transform.forward * speed;
+
+	}
 	public int getSpeed(){
 		return (int)(speed * 100);
 	}

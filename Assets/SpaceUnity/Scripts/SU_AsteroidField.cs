@@ -274,7 +274,7 @@ public class SU_AsteroidField : MonoBehaviour {
 			
 			// Instantiate the new asteroid at a random location
 			Transform _newAsteroid = (Transform) Instantiate(_newAsteroidPrefab, _newPosition, _cacheTransform.rotation);
-			
+			//Transform _newAsteroid = (Transform) PhotonNetwork.Instantiate(_newAsteroidPrefab, _newPosition, _cacheTransform.rotation,0);
 			// Set a random material of the asteroid based on the weighted probabilty list
 			switch (WeightedRandom(_materialList)) {
 			case "VeryCommon":

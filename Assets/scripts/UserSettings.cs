@@ -3,13 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 public class UserSettings : MonoBehaviour {
 	enum CameraDisplay{OVR,screen};
-	enum ControllerType{gamepad,keyboard};
+	enum ControllerType{gamepad,keyboard,joystick};
 
 	public Toggle ovrToggle;
 	public Toggle screenToggle;
 
 	public Toggle gamepadToggle;
 	public Toggle keyboardToggle;
+	public Toggle joystickToggle;
 
 	CameraDisplay myCam;
 	ControllerType myController;
@@ -41,7 +42,10 @@ public class UserSettings : MonoBehaviour {
 		
 	}
 
-
+	public void useJoyStick(){
+		myController = ControllerType.joystick;
+		
+	}
 
 
 	public void saveAll(){
@@ -89,10 +93,17 @@ public class UserSettings : MonoBehaviour {
 			if(PlayerPrefs.GetString ("controllerMode")== ControllerType.gamepad.ToString()){
 				gamepadToggle.isOn = true;
 				keyboardToggle.isOn = false;
+				joystickToggle.isOn = false;
 			}
 			if(PlayerPrefs.GetString ("controllerMode")== ControllerType.keyboard.ToString()){
 				gamepadToggle.isOn = false;
 				keyboardToggle.isOn = true;
+				joystickToggle.isOn = false;
+			}
+			if(PlayerPrefs.GetString ("controllerMode")== ControllerType.joystick.ToString()){
+				gamepadToggle.isOn = false;
+				keyboardToggle.isOn = false;
+				joystickToggle.isOn = true;
 			}
 		}
 

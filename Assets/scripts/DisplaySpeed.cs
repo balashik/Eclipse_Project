@@ -7,7 +7,9 @@ public class DisplaySpeed : MonoBehaviour {
 	public Text healthText;
 	public Text kills;
 	public Text deaths;
+	public Text playersInGame;
 	Score playerScore;
+	int enemies;
 	// Use this for initialization
 	void Start () {
 	
@@ -17,8 +19,10 @@ public class DisplaySpeed : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		enemies = PhotonNetwork.countOfPlayers - 1;
 		speedText.text = GetComponent<fighterMotor> ().getSpeed ().ToString();
 		healthText.text = GetComponent<Health> ().getHealth ().ToString ();
+		playersInGame.text = "Enemies: "+enemies.ToString ();
 		kills.text = "Kills: " + playerScore.getKills ();
 		deaths.text = "Deaths: " + playerScore.getDeath ();
 		if (GetComponent<Health> ().getHealth () > 85) {

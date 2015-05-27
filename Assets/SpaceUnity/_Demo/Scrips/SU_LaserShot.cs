@@ -88,12 +88,22 @@ public class SU_LaserShot : MonoBehaviour {
 
 					if (h!=null){
 						if (h.getHealth()>=0){
-							Debug.Log (_hit.collider.name);
-							h.GetComponent<PhotonView>().RPC("addDamage",PhotonTargets.All,damage);
-							if(h.getHealth()<=0){
-
-								MyScore.GetComponent<Score> ().addKill ();
+							if(h.GetComponent<PhotonView>()==null){
+								h.addDamage(damage);
+								if(h.getHealth()<=0){
+									MyScore.GetComponent<Score> ().addKill ();
+								}
 							}
+							else{
+								h.GetComponent<PhotonView>().RPC("addDamage",PhotonTargets.All,damage);
+								if(h.getHealth()<=0){
+									//if(h.GetComponent<PhotonView>().isMine){
+										MyScore.GetComponent<Score> ().addKill ();
+									//}
+								}
+
+							}
+
 							// Instantiate the explosion effect at the point of impact
 							//Instantiate(explosionEffect, _hit.transform.position, _rotation);
 							// Destroy the game object that we just hit

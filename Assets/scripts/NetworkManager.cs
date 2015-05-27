@@ -44,11 +44,30 @@ public class NetworkManager :Photon.MonoBehaviour {
 				
 			}
 		}
-		if (Input.GetKey(KeyCode.Escape)) {
-			Debug.Log ("espcaped game");
-			endGameCanvas.gameObject.SetActive(true);
-			endGameCanvas.GetComponent<EndGame>().Fighter = Fighter;
+		switch (PlayerPrefs.GetString ("controllerMode")) {
+				case "keyboard":
+						{
+								if (Input.GetKey (KeyCode.Escape)) {
+										Debug.Log ("espcaped game");
+										endGameCanvas.gameObject.SetActive (true);
+										endGameCanvas.GetComponent<EndGame> ().Fighter = Fighter;
+								}
+								break;
+						}
+				case "gamepad":
+						{
+				if(Input.GetAxis("Start")==1){
+					Debug.Log ("espcaped game");
+					endGameCanvas.gameObject.SetActive (true);
+					endGameCanvas.GetComponent<EndGame> ().Fighter = Fighter;
+				}
+				break;
+						}
+			case "joystick":{Debug.Log ("still not active");
+					break;
+			}
 		}
+		
 	}
 
 	

@@ -27,21 +27,26 @@ public class Health : Photon.MonoBehaviour {
 
 		Debug.Log ("destroy");
 		Instantiate(explosionEffect,transform.position,transform.rotation);
-		if(gameObject.GetComponent<PhotonView>().instantiationId==0){
-			MyScore.GetComponent<Score> ().addDeath ();	
-			Destroy(gameObject);
-		}else{
-			if(GetComponent<PhotonView>().isMine){
-				//MyScore.GetComponent<Score> ().addDeath ();
-				if (gameObject.tag=="Fighter"){
-					GameObject.Find("OVRCameraRig");
-					NetworkManager nm = GameObject.FindObjectOfType<NetworkManager>();
-					nm.amIAlive = false;
-					nm.respawnTime = 10f;
+		if (gameObject.GetComponent<PhotonView> () == null) {
+						Destroy (gameObject);		
+		} else {
+			if(gameObject.GetComponent<PhotonView>().instantiationId==0){
+				Destroy(gameObject);
+			}else{
+				if(GetComponent<PhotonView>().isMine){
+					Debug.Log("entered is Mine");
+					MyScore.GetComponent<Score> ().addDeath ();
+					if (gameObject.tag=="Fighter"){
+						GameObject.Find("OVRCameraRig");
+						NetworkManager nm = GameObject.FindObjectOfType<NetworkManager>();
+						nm.amIAlive = false;
+						nm.respawnTime = 10f;
+					}
+					PhotonNetwork.Destroy (gameObject);
 				}
-				PhotonNetwork.Destroy (gameObject);
 			}
 		}
+
 		
 	}
 }
