@@ -18,6 +18,10 @@ public class EndGame : MonoBehaviour {
 			Debug.Log ("no fighter connected");		
 		} else {
 			destroyFighter ();
+			//printing username parameter
+			Debug.Log (PlayerPrefs.GetString("username"));
+			//destroying username parameter
+			PlayerPrefs.DeleteKey("username");
 		}
 		endGameMenu.setIsOpen (true);
 		kills.text = "kills: "+ scoreManager.GetComponent<Score>().getKills();

@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\fighterGuns.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\EndGame.cs">
     <Files>
+      <File FileName="Assets\scripts\LoginManager.cs" Line="32" Column="58" />
       <File FileName="Assets\scripts\fighterGuns.cs" Line="14" Column="66" />
       <File FileName="Assets\scripts\Health.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\DisplaySpeed.cs" Line="22" Column="44" />
+      <File FileName="Assets\scripts\DisplaySpeed.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\Score.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\NetworkManager.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\fighterMotor.cs" Line="1" Column="1" />
@@ -14,6 +15,7 @@
       <File FileName="Assets\scripts\singlePlayerManager.cs" Line="1" Column="1" />
       <File FileName="Assets\SpaceUnity\Scripts\SU_AsteroidField.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\starCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\EndGame.cs" Line="24" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

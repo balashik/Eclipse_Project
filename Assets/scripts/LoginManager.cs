@@ -28,7 +28,9 @@ public class LoginManager : MonoBehaviour {
 					connectionStatus.text = "Username or Password fields are empty";
 				}
 		else
-			{login_client.POST (input_username.text, input_password.text);
+			{
+			PlayerPrefs.SetString("username",input_username.text);
+			login_client.POST (input_username.text, input_password.text);
 				StartCoroutine (WaitForLogin ());}
 	}
 
