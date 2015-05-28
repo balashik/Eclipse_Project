@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 public class HTTPClient : MonoBehaviour {
 
-	//private string url = "http://52.24.91.179/";
 	private string url = "http://52.24.91.179/gamelogin";
 	private int success_fail = -1;
 	// 0 - cannot connect to server - server down/no internet
 	// 1 - cannot login - check username/password or register in website
 	// 2 - login success
-
+	// 3 - Login Failed - User Already Logged From Different PC
+	// 4 - Cannot Login - Server Failure - Please Try Again Later
+	
 	//Indicates if and when the request process has finished.
 	private bool request_status = false;
 
@@ -61,9 +62,19 @@ public class HTTPClient : MonoBehaviour {
 				success_fail = 2;
 				Debug.Log(success_fail);
 			}
-			else
+			if(www.text.Contains("user does not exist"))
 			{
 				success_fail = 1;
+				Debug.Log(success_fail);
+			}
+			if(www.text.Contains("user already logged in"))
+			{
+				success_fail = 3;
+				Debug.Log(success_fail);
+			}
+			if(www.text.Contains("database query failure"))
+			{
+				success_fail = 4;
 				Debug.Log(success_fail);
 			}
 		} 

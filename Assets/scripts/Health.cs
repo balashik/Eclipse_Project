@@ -28,6 +28,7 @@ public class Health : Photon.MonoBehaviour {
 		Debug.Log ("destroy");
 		Instantiate(explosionEffect,transform.position,transform.rotation);
 		if (gameObject.GetComponent<PhotonView> () == null) {
+			Debug.Log ("destroyed object is without photonview");
 						Destroy (gameObject);		
 		} else {
 			if(gameObject.GetComponent<PhotonView>().instantiationId==0){
@@ -39,8 +40,17 @@ public class Health : Photon.MonoBehaviour {
 					if (gameObject.tag=="Fighter"){
 						GameObject.Find("OVRCameraRig");
 						NetworkManager nm = GameObject.FindObjectOfType<NetworkManager>();
-						nm.amIAlive = false;
-						nm.respawnTime = 10f;
+						if (nm==null){
+							singlePlayerManager sm = GameObject.FindObjectOfType<singlePlayerManager>();
+							sm.amIAlive = false;
+							sm.respawnTime = 10f;
+
+						}
+						else{
+							nm.amIAlive = false;
+							nm.respawnTime = 10f;
+						}
+
 					}
 					PhotonNetwork.Destroy (gameObject);
 				}

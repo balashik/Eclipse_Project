@@ -1,18 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SpaceUnity\_Demo\Scrips\SU_LaserShot.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\fighterGuns.cs">
     <Files>
-      <File FileName="Assets\scripts\DisplaySpeed.cs" Line="25" Column="43" />
+      <File FileName="Assets\scripts\fighterGuns.cs" Line="14" Column="66" />
+      <File FileName="Assets\scripts\Health.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\DisplaySpeed.cs" Line="22" Column="44" />
       <File FileName="Assets\scripts\Score.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\NetworkManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\Health.cs" Line="38" Column="6" />
       <File FileName="Assets\scripts\fighterMotor.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\networkFighter.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\HTTPClient.cs" Line="1" Column="1" />
-      <File FileName="Assets\SpaceUnity\_Demo\Scrips\SU_LaserShot.cs" Line="100" Column="51" />
+      <File FileName="Assets\SpaceUnity\_Demo\Scrips\SU_LaserShot.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\singlePlayerManager.cs" Line="1" Column="1" />
       <File FileName="Assets\SpaceUnity\Scripts\SU_AsteroidField.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\fighterGuns.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\starCollision.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
