@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public class HTTPClient : MonoBehaviour {
 
-	private string url = "http://52.24.91.179/gamelogin";
+	private string login_url = "http://52.24.91.179/gamelogin";
 	private int success_fail = -1;
+
+	//Login request result options:
 	// 0 - cannot connect to server - server down/no internet
 	// 1 - cannot login - check username/password or register in website
 	// 2 - login success
@@ -14,7 +16,6 @@ public class HTTPClient : MonoBehaviour {
 	
 	//Indicates if and when the request process has finished.
 	private bool request_status = false;
-
 
 	public bool GetStatus ()
 	{
@@ -31,27 +32,27 @@ public class HTTPClient : MonoBehaviour {
 		return success_fail;
 	}
 
-	public void POST(string username, string passw)
+	public void Login_POST(string username, string passw)
 	{
 		WWWForm form = new WWWForm();
 		form.AddField("usr", username);
 		form.AddField("pass", passw);
 
-		WWW www = new WWW(url, form);
+		WWW www = new WWW(login_url, form);
 
-		StartCoroutine (WaitForRequest (www));
+		StartCoroutine (WaitForLoginRequest (www));
 	}
 
-	private IEnumerator WaitForRequest (WWW www)
+	private IEnumerator WaitForLoginRequest (WWW www)
 	{
 		Debug.Log ("in wait");
-		yield return StartCoroutine(ExecuteRequest(www));
+		yield return StartCoroutine(ExecuteLoginRequest(www));
 		//response is JSON
 		request_status = true;
 		Debug.Log ("out wait");
 	}
 
-	private IEnumerator ExecuteRequest(WWW www)
+	private IEnumerator ExecuteLoginRequest(WWW www)
 	{
 		Debug.Log ("in exec");
 		yield return www;

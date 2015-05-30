@@ -5,7 +5,9 @@ public class Health : Photon.MonoBehaviour {
 	
 	public Transform explosionEffect;
 	public int health = 100;
+	//public string killersID;
 	GameObject MyScore;
+
 	void Start(){
 	
 		MyScore = GameObject.Find("ScoreManager");

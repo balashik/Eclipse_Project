@@ -3,17 +3,16 @@ using System.Collections;
 
 public class FighterSettings : MonoBehaviour {
 
-	public int teamId = -1;
-	public int health  = 100;
+	string playerName;
+
 	void Awake(){
-		gameObject.tag = "Fighter";
+
+		playerName = PlayerPrefs.GetString("username");
 	}
 
-	public void addDamage(int num){
-		health += num;
+	public string getPlayerName(){
+		return playerName;
 	}
-	public int getHealth(){
-		return health;
-	}
+
 
 }

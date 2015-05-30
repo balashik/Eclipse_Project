@@ -6,7 +6,7 @@ public class LoginManager : MonoBehaviour {
 	
 	public Menu currentMenu;
 	public GameObject myCanvas;
-	HTTPClient login_client;
+	public HTTPClient login_client;
 	public InputField input_username;
 	public InputField input_password;
 	private int attempt_result;
@@ -30,7 +30,8 @@ public class LoginManager : MonoBehaviour {
 		else
 			{
 			PlayerPrefs.SetString("username",input_username.text);
-			login_client.POST (input_username.text, input_password.text);
+			//Debug.Log(PlayerPrefs.GetString ("username"));
+			login_client.Login_POST (input_username.text, input_password.text);
 				StartCoroutine (WaitForLogin ());}
 	}
 
@@ -38,7 +39,7 @@ public class LoginManager : MonoBehaviour {
 	{
 		Debug.Log ("In login enu");
 		while (login_client.GetStatus()==false) {
-			connectionStatus.text = "connecting";
+			connectionStatus.text = "Connecting";
 			Debug.Log ("still waiting");
 			yield return null;
 		}
@@ -47,7 +48,7 @@ public class LoginManager : MonoBehaviour {
 		attempt_result = login_client.GetResultStatus ();
 		Debug.Log ("out login enu");
 		Debug.Log ("time to check result");
-
+		//Login request result options:
 		// 0 - cannot connect to server - server down/no internet
 		// 1 - cannot login - check username/password or register in website
 		// 2 - login success

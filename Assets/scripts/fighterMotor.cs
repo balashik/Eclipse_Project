@@ -94,14 +94,21 @@ public class fighterMotor : MonoBehaviour {
 	}
 
 	void joystickControll(){
+
+		speed = Input.GetAxisRaw("SpeedJoyStick");
 		//speed = (Input.GetAxis ("SpeedJoyStick")*acceleration);
-		speed = Input.GetAxisRaw ("SpeedJoyStick");
-		Debug.Log (Input.GetAxisRaw("VerticalJoyStick"));
+		//speed = Input.GetAxisRaw ("SpeedJoyStick");
+		//Debug.Log (Input.GetAxisRaw("VerticalJoyStick"));
+		//myRigidBody.velocity += transform.forward * speed;
+
+		myRigidBody.AddRelativeTorque (new Vector3 (0, 0, -Input.GetAxis ("XJoyStick") * roleRate * myRigidBody.mass));
+		//myRigidBody.AddRelativeTorque (new Vector3 (0, Input.GetAxis ("YJoyStick") * yawRate * myRigidBody.mass, 0));
+		myRigidBody.AddRelativeTorque (new Vector3 (Input.GetAxis ("YJoyStick") * pitchRate * myRigidBody.mass, 0, 0));
 		myRigidBody.velocity += transform.forward * speed;
 
 	}
 	public int getSpeed(){
-		return (int)(speed * 100);
+		return (int)(speed * 10000);
 	}
 
 

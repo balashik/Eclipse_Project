@@ -166,9 +166,11 @@
      <Compile Include="Assets\scripts\FighterSpawningSpot.cs" />
      <Compile Include="Assets\scripts\FightersArray.cs" />
      <Compile Include="Assets\scripts\HTTPClient.cs" />
+     <Compile Include="Assets\scripts\HTTPClientLogOut.cs" />
      <Compile Include="Assets\scripts\Health.cs" />
      <Compile Include="Assets\scripts\LoadingScreen.cs" />
      <Compile Include="Assets\scripts\LoginManager.cs" />
+     <Compile Include="Assets\scripts\LogoutManager.cs" />
      <Compile Include="Assets\scripts\Menu.cs" />
      <Compile Include="Assets\scripts\MenuManager.cs" />
      <Compile Include="Assets\scripts\MyPlayerSettings.cs" />
