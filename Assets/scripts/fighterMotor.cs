@@ -29,15 +29,17 @@ public class fighterMotor : MonoBehaviour {
 	void Update () {
 
 		if (speed > 0) {
-			foreach (thrusters thruster in myThrusters) {
+			/*foreach (thrusters thruster in myThrusters) {
 				thruster.StartThruster ();
 				
-			}
+			}*/
+			gameObject.GetComponent<PhotonView> ().RPC("increaseThrust",PhotonTargets.All);
 		}
 		if (speed<= 0) {
-			foreach (thrusters thruster in myThrusters) {
+			/*foreach (thrusters thruster in myThrusters) {
 				thruster.StopThruster ();
-			}
+			}*/
+			gameObject.GetComponent<PhotonView> ().RPC("decreaseThrust",PhotonTargets.All);
 		}
 
 	}
@@ -111,7 +113,19 @@ public class fighterMotor : MonoBehaviour {
 		return (int)(speed * 10000);
 	}
 
+	[RPC]
+	void increaseThrust(){
+		foreach (thrusters thruster in myThrusters) {
+			thruster.StartThruster ();
+		}
+	}
 
+	[RPC]
+	void decreaseThrust(){
+		foreach (thrusters thruster in myThrusters) {
+			thruster.StopThruster ();
+		}
+	}
 
 
 
