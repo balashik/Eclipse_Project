@@ -176,6 +176,7 @@
      <Compile Include="Assets\scripts\MyPlayerSettings.cs" />
      <Compile Include="Assets\scripts\NetworkManager.cs" />
      <Compile Include="Assets\scripts\NewBehaviourScript.cs" />
+     <Compile Include="Assets\scripts\Radar.cs" />
      <Compile Include="Assets\scripts\Score.cs" />
      <Compile Include="Assets\scripts\UI_Script.cs" />
      <Compile Include="Assets\scripts\UserSettings.cs" />

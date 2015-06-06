@@ -57,7 +57,9 @@ public class fighterMotor : MonoBehaviour {
 	}
 
 	void gamepadControll(){
+
 		speed = Input.GetAxis ("Speed") * acceleration * -1;
+		Debug.Log (Input.GetAxis ("Speed"));
 		if (speed >= 1) {
 			speed = 1f;		
 		}
@@ -96,7 +98,7 @@ public class fighterMotor : MonoBehaviour {
 	}
 
 	void joystickControll(){
-
+		Debug.Log("enter here");
 		speed = Input.GetAxisRaw("SpeedJoyStick");
 		//speed = (Input.GetAxis ("SpeedJoyStick")*acceleration);
 		//speed = Input.GetAxisRaw ("SpeedJoyStick");
