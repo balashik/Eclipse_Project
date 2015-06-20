@@ -80,6 +80,9 @@ public class fighterMotor : MonoBehaviour {
 				speed = 1f;
 			}
 		}
+		if (Input.GetKey(KeyCode.N)){
+			speed=0;
+		}
 		if (Input.GetKey (KeyCode.X)) {
 			speed -=(Time.deltaTime* acceleration);
 			if (speed >= 1) {
