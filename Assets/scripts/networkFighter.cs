@@ -10,10 +10,12 @@ public class networkFighter : Photon.MonoBehaviour {
 	public OVRCameraRig myOVRCam;
 	public Camera myScreenCam;
 	public bool amIPilot;
+	public GameObject spaceDust;
 	void Start(){
 		if (photonView.isMine) {
 			gameObject.GetComponent<fighterGuns>().enabled = true;
 			gameObject.GetComponent<fighterMotor>().enabled = true;
+			spaceDust.SetActive(true);
 			setupCamera();
 
 
